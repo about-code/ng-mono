@@ -1,0 +1,26 @@
+{
+  "name": "@about-code/slush-ng-monorepo",
+  "version": "1.0.0-alpha.1",
+  "description": "Angular project scaffolding tool",
+  "main": "index.js",
+  "scripts": {
+    "new": "gulp --gulpfile ./slushfile.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": "slush, generator, angular, scaffold, monorepo, mono-repo, ng, cli, gulp",
+  "author": "about-code@users.noreply.github.com",
+  "license": "SEE LICENSE IN LICENSE.txt",
+  "dependencies": {
+    "change-case": "^3.0.1",
+    "gulp": "^3.9.1",
+    "gulp-conflict": "^0.4.0",
+    "gulp-filter": "^5.0.0",
+    "gulp-inject-string": "^1.1.0",
+    "gulp-plumber": "^1.1.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-template": "^4.0.0",
+    "gutil": "^1.6.4",
+    "inquirer": "^3.0.6",
+    "npmi": "^3.0.0"
+  }
+}

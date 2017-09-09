@@ -1,0 +1,3 @@
+node_modules
+.ng_build
+dist

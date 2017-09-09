@@ -1,0 +1,32 @@
+{
+  "name": "<%= pkg_fullname %>",
+  "version": "1.0.0",
+  "author": "<%= pkg_author %>",
+  "license": "SEE LICENSE IN LICENSE.txt",
+  "description": "",
+  "main": "<%= pkg_fullname %>.es5.umd.js",
+  "module": "<%= pkg_fullname %>.es5.js",
+  "es2015": "<%= pkg_fullname %>.js",
+  "scripts": {
+    "build": "node ./build.js",
+    "packager": "ng-packagr -p ng-package.json"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@angular/core": "^4.2.6",
+    "@angular/compiler": "^4.0.0",
+    "@angular/compiler-cli": "^4.0.0",
+    "fs-extra": "^3.0.1",
+    "ng-packagr": "1.0.0-pre.7",
+    "rollup": "^0.41.6",
+    "rxjs": "5.2.0",
+    "typescript": "2.4.0",
+    "zone.js": "^0.8.12"
+  },
+  "peerDependencies": {
+    "@angular/core": "^4.2.6",
+    "rxjs": "5.2.0",
+    "zone.js": "^0.8.12"
+  },
+  "optionalDependencies": {}
+}

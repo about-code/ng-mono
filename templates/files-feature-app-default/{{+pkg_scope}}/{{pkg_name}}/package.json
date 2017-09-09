@@ -1,0 +1,13 @@
+{
+  "name": "<%=pkg_fullname %>",
+  "version": "<%= pkg_version %>",
+  "description": "<%= pkg_description %>",
+  "main": "index.js",
+  "scripts": {},
+  "dependencies": {},
+  "devDependencies": {},
+  "peerDependencies": {},
+  "optionalDependencies": {},
+  "author": "<%= pkg_author %>",
+  "license": "SEE LICENSE IN LICENSE.txt"
+}
