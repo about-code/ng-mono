@@ -8,7 +8,6 @@ let path = require("path")
     ,changeCase = require("change-case");
 
 // Some Defaults
-const WORKSPACE = "./";
 const SCOPE = "@foo";
 const PKG_NAME = "foo-feature";
 
@@ -48,11 +47,10 @@ gulp.task("component", component);
 
 function project(done) {
     return inquirer.prompt([
-        {type: "input",   name: "workspace",           required: true,  message: "Workspace:", default: WORKSPACE, filter: pathRule},
         {type: "input",   name: "proj_name",           required: true,  message: "Project name (kebab-case):", filter: packageNameRule},
         {type: "input",   name: "app_ctx_root",        required: true,  message: "App context root (use leading slash):", default: "/", filter: (val) => path.join("/", val, "/").replace(/\\/, "/")},
         {type: "input",   name: "app_title",           required: false, message: "Title to use in browser tabs:"},
-        {type: "input",   name: "pkg_scope",           required: true,  message: `NPM Package Scope (kebab-case). e.g. ${SCOPE}:`, filter: packageNameRule},
+        {type: "input",   name: "pkg_scope",           required: true,  message: `NPM Package Scope e.g. ${SCOPE} (kebab-case):`, filter: packageNameRule},
         {type: "input",   name: "pkg_description",     required: false, message: "Short project description (max. one sentence):"},
         {type: "input",   name: "pkg_version",         required: true,  message: "Initial version:", default: "1.0.0"},
         {type: "input",   name: "pkg_author",          required: false, message: "Authorship:", default: "anonymous"},
@@ -62,8 +60,8 @@ function project(done) {
     ])
     .then((answers) => {
         if (! answers.confirm) { process.exit(0); }
-        let {workspace, proj_name, pkg_scope, bool_install_deps} = answers;
-        let proj_dir = path.join(process.cwd(), workspace, proj_name);
+        let {proj_name, pkg_scope, bool_install_deps} = answers;
+        let proj_dir = path.join(process.cwd(), proj_name);
         let config = {
             gulp: gulp,
             answers: Object.assign(answers, {
@@ -85,16 +83,16 @@ function project(done) {
     .then(copyTemplate)
     .then(function (config) {
         // Generate app and theme package?
-        let {workspace, proj_name, pkg_fullname, bool_default_pkgs} = config.answers;
+        let {proj_name, pkg_fullname, bool_default_pkgs} = config.answers;
         if (bool_default_pkgs) {
             // answer: yes
             config.copyTemplate = {
                 templateDir: path.join(__dirname, "./templates/files-feature-app-default"),
-                targetDir:   path.join(process.cwd(), workspace, proj_name, 'packages')
+                targetDir:   path.join(process.cwd(), proj_name, 'packages')
             };
             config.processSnippets = {
                 filesGlob: [
-                    path.join(process.cwd(), workspace, proj_name, "**/bundle-theme.ts"), // add import of index.scss
+                    path.join(process.cwd(), proj_name, "**/bundle-theme.ts"), // add import of index.scss
                 ]
             }
         } else {
@@ -111,8 +109,6 @@ function project(done) {
 
 function package(done) {
     return inquirer.prompt([
-        {type: "input",   name: "workspace",           required: true,  message: "Workspace:", default: WORKSPACE, filter: pathRule},
-        {type: "input",   name: "proj_name",           required: true,  message: "Target project (kebab-case):", filter: packageNameRule},
         {type: "input",   name: "pkg_fullname",        required: true,  message: "Full package name (kebab-case):", default: `${SCOPE}/${PKG_NAME}`, filter: packageNameRule},
         {type: "input",   name: "pkg_description",     required: false, message: "Short feature description (max. one sentence):"},
         {type: "input",   name: "pkg_version",         required: true,  message: "Initial version:", default: "1.0.0"},
@@ -121,7 +117,9 @@ function package(done) {
     ])
     .then(function(answers) {
         if (! answers.confirm) { process.exit(0); }
-        let {workspace, proj_name, pkg_fullname} = answers;
+        let {
+            pkg_fullname
+        } = answers;
         pkg_fullname = pkg_fullname.split("/");
         return {
             gulp: gulp,
@@ -131,27 +129,60 @@ function package(done) {
             }),
             copyTemplate: {
                 templateDir: path.join(__dirname, "./templates/files-feature-package"),
-                targetDir:   path.join(process.cwd(), workspace, proj_name, 'packages')
+                targetDir:   path.join(process.cwd(), 'packages')
             }
         };
     })
     .then(copyTemplate);
 }
 
+
+function ngModule(done) {
+    return inquirer.prompt([
+        {type: "input",   name: "exported_name", required: true,  message: "Module-Class Name (CamelCase):", filter: classNameRule},
+        {type: "input",   name: "pkg_fullname",  required: true,  message: "Target package (kebab-case)", default: `${SCOPE}/${PKG_NAME}`, filter: packageNameRule},
+        {type: "input",   name: "internal_path", required: true,  message: "Package-internal path (./src/...)", default: "", filter: pathRule},
+        {type: "confirm", name: "bool_export",   required: false, message: "Should the target package export the module class?", default: 'y'},
+        {type: "confirm", name: "confirm",       required: true,  message: "Ready?"}
+    ])
+    .then(function(answers) {
+        if (! answers.confirm) { process.exit(0); }
+        let {pkg_fullname, internal_path, exported_name, bool_export} = answers;
+        let config = {
+            gulp: gulp,
+            answers: Object.assign(answers, {
+                "internal_path": './' + path.join(internal_path, exported_name)
+            }),
+            copyTemplate: {
+                templateDir: path.join(__dirname, "./templates/ng-module"),
+                targetDir:   path.join(process.cwd(), 'packages', pkg_fullname, 'src', internal_path)
+            },
+            processSnippets: {
+                filesGlob: [
+                    bool_export ? path.join(process.cwd(), 'packages', pkg_fullname, 'index.ts') : ''
+                ]
+            }
+        }
+        return config;
+    })
+    .then(copyTemplate)
+    .then(processSnippets);
+}
+
+
 function component(done) {
     return inquirer.prompt([
-        {type: "input",   name: "workspace",     required: true, message: "Workspace:", default: WORKSPACE, filter: pathRule},
-        {type: "input",   name: "proj_name",     required: true, message: "Target project (kebab-case):", filter: packageNameRule},
-        {type: "input",   name: "pkg_fullname",  required: true, message: "Target package (Feature Package):", default: "@foo/foo-feature", filter: packageNameRule},
         {type: "input",   name: "comp_name",     required: true, message: "Component class name (CamelCase):", filter: classNameRule},
         {type: "input",   name: "comp_selector", required: true, message: "Component Selector (kebab-case):", filter: componentSelectorRule},
         {type: "input",   name: "comp_route",    required: true, message: "Component route (all lowercase):", filter: pathRule},
+        {type: "input",   name: "pkg_fullname",  required: true, message: "Target package (Feature Package):", default: "@foo/foo-feature", filter: packageNameRule},
+        {type: "input",   name: "internal_path", required: true, message: "Package-internal path (./src/...):", default: "", filter: pathRule },
         {type: "confirm", name: "confirm",       required: true, message: "Ready?"}
     ])
     .then(function(answers) {
         if (! answers.confirm) { process.exit(0); }
-        let {workspace, proj_name, comp_name, pkg_fullname} = answers;
-        let targetDir = path.join(process.cwd(), workspace, proj_name, 'packages', pkg_fullname, 'src');
+        let {comp_name, pkg_fullname} = answers;
+        let targetDir = path.join(process.cwd(), 'packages', pkg_fullname, 'src', internal_path);
         return {
             gulp: gulp,
             answers: Object.assign(answers, {
@@ -166,43 +197,6 @@ function component(done) {
                 filesGlob: [targetDir + "/**/*.ts"]
             }
         }
-    })
-    .then(copyTemplate)
-    .then(processSnippets);
-}
-
-function ngModule(done) {
-    return inquirer.prompt([
-        {type: "input",   name: "workspace",     required: true,  message: "Workspace", default: WORKSPACE, filter: pathRule},
-        {type: "input",   name: "proj_name",     required: true,  message: "Target project (kebab-case):", filter: packageNameRule},
-        {type: "input",   name: "pkg_fullname",  required: true,  message: "Target package (kebab-case)", default: `${SCOPE}/${PKG_NAME}`, filter: packageNameRule},
-        {type: "input",   name: "exported_name", required: true,  message: "Module-Class Name (CamelCase):", filter: classNameRule},
-        {type: "input",   name: "internal_path", required: true,  message: "Internal path within package", default: "./src", filter: pathRule},
-        {type: "confirm", name: "bool_export",   required: false, message: "Should the target package export the module class?", default: 'y'},
-        {type: "confirm", name: "confirm",       required: true,  message: "Ready?"}
-    ])
-    .then(function(answers) {
-        if (! answers.confirm) { process.exit(0); }
-        let {
-            workspace, proj_name, pkg_fullname, internal_path, exported_name,
-            bool_export
-        } = answers;
-        let config = {
-            gulp: gulp,
-            answers: Object.assign(answers, {
-                "internal_path": './' + path.join(internal_path, exported_name)
-            }),
-            copyTemplate: {
-                templateDir: path.join(__dirname, "./templates/ng-module"),
-                targetDir:   path.join(process.cwd(), workspace, proj_name, 'packages', pkg_fullname, internal_path)
-            },
-            processSnippets: {
-                filesGlob: [
-                    bool_export ? path.join(process.cwd(), workspace, proj_name, 'packages', pkg_fullname, 'index.ts') : ''
-                ]
-            }
-        }
-        return config;
     })
     .then(copyTemplate)
     .then(processSnippets);
