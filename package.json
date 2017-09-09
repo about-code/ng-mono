@@ -1,5 +1,5 @@
 {
-  "name": "@about-code/slush-ng-monorepo",
+  "name": "slush-ng-monorepo",
   "version": "1.0.0-alpha.1",
   "description": "Angular project scaffolding tool",
   "main": "index.js",
