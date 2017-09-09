@@ -37,6 +37,7 @@ slush ng-monorepo
 
 Provide the following answers:
 - Project name: **my-foo**
+- App context root (use leading slash): **/**
 - Title to use in browser tabs: **My Foo Application**
 - NPM Package Scope: **@foo**
 - Short project description: **A scalable Angular2 application setup**
@@ -100,7 +101,6 @@ slush ng-monorepo:module
 Provide the following answers:
 - Module-Class Name (without -Module suffix): **FooFeatureModule**
 - Target package (Feature package): **@foo/my-foo-feature**
-- Package-internal path (./src/...): **/**
 - Should the target package export the module class? **y**
 - Ready: **y**
 
@@ -117,3 +117,19 @@ versioning. Only with npm packages we get
 - a true module facade (index.ts) which can be imported into external ES-Modules
 using the package name rather than relative paths which reveal the packages
 internal structure.
+
+### Creating and an NgComponent
+```
+slush ng-monorepo:component
+```
+Provide the following answers:
+- Component class name (CamelCase): **FooComponent**
+- Component Selector (kebab-case): **foo-component**
+- Component route (all lowercase): **foo**
+- Target package (Feature Package): **@foo/foo-feature**
+
+**What's next?`**
+We've created an NgComponent but didn't use it anywhere in a template.
+If you previously exported `FooFeatureModule` from `@foo/foo-feature` and
+imported it into `foo-app/src/AppModule.ts`, then try navigating to
+'http://localhost:8080/foo/'.

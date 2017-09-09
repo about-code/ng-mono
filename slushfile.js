@@ -117,9 +117,7 @@ function package(done) {
     ])
     .then(function(answers) {
         if (! answers.confirm) { process.exit(0); }
-        let {
-            pkg_fullname
-        } = answers;
+        let { pkg_fullname } = answers;
         pkg_fullname = pkg_fullname.split("/");
         return {
             gulp: gulp,
@@ -141,21 +139,20 @@ function ngModule(done) {
     return inquirer.prompt([
         {type: "input",   name: "exported_name", required: true,  message: "Module-Class Name (CamelCase):", filter: classNameRule},
         {type: "input",   name: "pkg_fullname",  required: true,  message: "Target package (kebab-case)", default: `${SCOPE}/${PKG_NAME}`, filter: packageNameRule},
-        {type: "input",   name: "internal_path", required: true,  message: "Package-internal path (./src/...)", default: "", filter: pathRule},
         {type: "confirm", name: "bool_export",   required: false, message: "Should the target package export the module class?", default: 'y'},
         {type: "confirm", name: "confirm",       required: true,  message: "Ready?"}
     ])
     .then(function(answers) {
         if (! answers.confirm) { process.exit(0); }
-        let {pkg_fullname, internal_path, exported_name, bool_export} = answers;
+        let {pkg_fullname, exported_name, bool_export} = answers;
         let config = {
             gulp: gulp,
             answers: Object.assign(answers, {
-                "internal_path": './' + path.join(internal_path, exported_name)
+                "internal_path": './' + path.join('src', exported_name)
             }),
             copyTemplate: {
                 templateDir: path.join(__dirname, "./templates/ng-module"),
-                targetDir:   path.join(process.cwd(), 'packages', pkg_fullname, 'src', internal_path)
+                targetDir:   path.join(process.cwd(), 'packages', pkg_fullname, 'src')
             },
             processSnippets: {
                 filesGlob: [
@@ -176,13 +173,12 @@ function component(done) {
         {type: "input",   name: "comp_selector", required: true, message: "Component Selector (kebab-case):", filter: componentSelectorRule},
         {type: "input",   name: "comp_route",    required: true, message: "Component route (all lowercase):", filter: pathRule},
         {type: "input",   name: "pkg_fullname",  required: true, message: "Target package (Feature Package):", default: "@foo/foo-feature", filter: packageNameRule},
-        {type: "input",   name: "internal_path", required: true, message: "Package-internal path (./src/...):", default: "", filter: pathRule },
         {type: "confirm", name: "confirm",       required: true, message: "Ready?"}
     ])
     .then(function(answers) {
         if (! answers.confirm) { process.exit(0); }
         let {comp_name, pkg_fullname} = answers;
-        let targetDir = path.join(process.cwd(), 'packages', pkg_fullname, 'src', internal_path);
+        let targetDir = path.join(process.cwd(), 'packages', pkg_fullname, 'src');
         return {
             gulp: gulp,
             answers: Object.assign(answers, {
