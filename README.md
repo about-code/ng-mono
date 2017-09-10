@@ -1,4 +1,4 @@
-# slush-ng-monorepo
+# slush-ng-monorepo (Experimental)
 
 A Slush generator to help setting up a scalable Angular2+ application project
 where an application is structured and built from multiple npm packages
