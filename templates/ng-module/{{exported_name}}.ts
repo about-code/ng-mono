@@ -17,6 +17,9 @@ import {RoutesModule} from "./RoutesModule";
     declarations: [
         // :: [, ]{{comp_class}}
     ],
+    exports: [
+        // :: [, ]{{comp_class}}
+    ],
     providers: []
 })
 export class <%= exported_name %> {
