@@ -50,11 +50,11 @@
   },
   "main": "index.js",
   "scripts": {
-    "build": "webpack --config ./config/webpack.prod.js --progress --bail",
-    "develop": "webpack-dev-server --config ./config/webpack.dev.js --progress --bail",
-    "linter-fix": "tslint --fix --project='./tslint.json' --type-check",
+    "build": "webpack --config ./config/webpack.prod.js",
+    "develop": "webpack-dev-server --config ./config/webpack.dev.js --progress",
     "lerna": "lerna",
-    "start": "webpack-dev-server --config ./config/webpack.prod.js --progress --bail",
+    "linter-fix": "tslint --fix --project='./tslint.json' --type-check",
+    "start": "webpack-dev-server --config ./config/webpack.prod.js --progress --watch=true",
     "test": "./node_modules/karma/bin/karma start ./config/karma.conf.js"
   },
   "author": "<%= pkg_author %>",
