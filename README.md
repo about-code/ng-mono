@@ -107,8 +107,8 @@ Provide the following answers:
 You will find the newly created NgModule in the *src* directory of the feature
 package. Also have a look at *index.ts*. Its exported there.
 
-**What's next?`**
-We've created an NgModule but didn't import it anywhere. You might want to import
+**What next?**
+We just created an NgModule but didn't import it anywhere. You might want to import
 it now manually into your *AppModule.ts*. Use
 ```
 import {FooFeatureModule} from "@foo/foo-feature"
@@ -121,7 +121,7 @@ of the `@NgModule` decorator.
 `dependencies` section of *foo-app's* `package.json`.
 
 
-### Creating and an NgComponent
+### Creating an NgComponent
 ```
 slush ng-monorepo:component
 ```
@@ -131,8 +131,8 @@ Provide the following answers:
 - Component route (all lowercase): **foo**
 - Target package (Feature Package): **@foo/foo-feature**
 
-**What's next?`**
-We've created an NgComponent but didn't use it anywhere in a template.
-If you previously exported `FooFeatureModule` from `@foo/foo-feature` and
-imported it into `foo-app/src/AppModule.ts`, then try navigating to
-'http://localhost:8080/foo/'.
+**What next?**
+We now created an NgComponent but don't use it anywhere in a template, so far.
+You should have already imported `FooFeatureModule` into `foo-app/src/AppModule.ts`.
+Now update `foo-app/src/app/AppComponent.html` such that it uses your generated
+`NgComponent`. Then build and try navigating to `http://localhost:8080/foo/`.
