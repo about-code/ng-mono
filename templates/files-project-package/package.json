@@ -38,12 +38,14 @@
     "karma-jasmine": "^1.1.0",
     "karma-webpack": "^2.0.4",
     "lerna": "^2.1.2",
+    "protractor": "^5.1.2",
     "node-sass": "^4.5.3",
     "raw-loader": "^0.5.1",
     "run-sequence": "^1.2.2",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.18.2",
     "typescript": "^2.2.2",
+    "ts-node": "^3.3.0",
     "webpack": "^3.4.0",
     "webpack-dev-server": "^2.7.1",
     "webpack-merge": "^4.1.0"
@@ -54,8 +56,11 @@
     "develop": "webpack-dev-server --config ./config/webpack.dev.js --progress",
     "lerna": "lerna",
     "linter-fix": "tslint --fix --project='./tslint.json' --type-check",
+    "selenium": "webdriver-manager start",
     "start": "webpack-dev-server --config ./config/webpack.prod.js --progress --watch=true",
-    "test": "./node_modules/karma/bin/karma start ./config/karma.conf.js"
+    "test": "./node_modules/karma/bin/karma start ./config/karma.conf.js",
+    "test-e2e": "protractor ./config/protractor.js",
+    "webdriver-manager": "webdriver-manager"
   },
   "author": "<%= pkg_author %>",
   "license": "SEE LICENSE IN LICENSE.txt"
