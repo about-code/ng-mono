@@ -18,5 +18,5 @@
 
 1. Before you run tests the very first time:  `npm run webdriver-manager update`
 1. Run Application (console 1): `npm start`
-1. Run Selenium Server locally (console 1): `npm run selenium`
-1. Run Tests locally (console 2): `npm run test-e2e`
+1. Run Selenium Server locally (console 2): `npm run selenium`
+1. Run Tests locally (console 3): `npm run test-e2e`
