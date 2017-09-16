@@ -94,12 +94,12 @@ long-term goal.
 cd ../../../
 ```
 
-### Creating and exporting an NgModule by a feature package
+### Creating and exporting an NgModule from a feature package
 ```
 slush ng-monorepo:module
 ```
 Provide the following answers:
-- Module-Class Name (without -Module suffix): **FooFeatureModule**
+- Module class name: **FooFeatureModule**
 - Target package (Feature package): **@foo/my-foo-feature**
 - Should the target package export the module class? **y**
 - Ready: **y**
@@ -109,14 +109,17 @@ package. Also have a look at *index.ts*. Its exported there.
 
 **What's next?`**
 We've created an NgModule but didn't import it anywhere. You might want to import
-it now into your *AppModule*. You should see that *NgModules* help
-organizing an Angular application into modules but don't provide any means of
-versioning. Only with npm packages we get
-- true modularization
-- powerful dependency management and tooling
-- a true module facade (index.ts) which can be imported into external ES-Modules
-using the package name rather than relative paths which reveal the packages
-internal structure.
+it now manually into your *AppModule.ts*. Use
+```
+import {FooFeatureModule} from "@foo/foo-feature"
+```
+to ES-import the module class and add `FooFeatureModule` to the `imports`-Section
+of the `@NgModule` decorator.
+
+> **Important:** Note that by ES-importing you created a hard dependency between
+*foo-app* package and *foo-feature* package, so add *foo-feature* to the
+`dependencies` section of *foo-app's* `package.json`.
+
 
 ### Creating and an NgComponent
 ```
