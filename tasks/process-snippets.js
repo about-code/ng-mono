@@ -1,5 +1,6 @@
 var path = require("path")
     ,conflict = require("gulp-conflict")
+    ,gulp = require("gulp")
     ,gutil = require("gulp-util")
     ,template = require("gulp-template")
     ,inject = require("gulp-inject-string")
@@ -64,7 +65,7 @@ var path = require("path")
 module.exports = function (taskConf) {
 
     return new Promise((resolve, reject) => {
-        let { gulp, answers, processSnippets } = taskConf;
+        let { answers, processSnippets } = taskConf;
         let { confirm } = answers;
         if (!confirm) {
             reject();

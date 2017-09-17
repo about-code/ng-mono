@@ -1,0 +1,1 @@
+Copyright (c) <%= pkg_author %>. All rights reserved.

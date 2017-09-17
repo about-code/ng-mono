@@ -2,6 +2,7 @@ const process = require('process')
     ,path = require('path')
     ,template = require('gulp-template')
     ,conflict = require('gulp-conflict')
+    ,gulp = require('gulp')
     ,gutil = require('gulp-util')
     ,plumber = require('gulp-plumber')
     //
@@ -28,7 +29,7 @@ const process = require('process')
 module.exports = function(taskConf) {
 
     return new Promise((resolve, reject) => {
-        let { gulp, answers, copyTemplate } = taskConf;
+        let { answers, copyTemplate } = taskConf;
         let { targetDir, templateDir, install_deps} = copyTemplate;
         let { confirm } = answers;
         if (!confirm) {
