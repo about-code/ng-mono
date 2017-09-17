@@ -1,6 +1,6 @@
 {
   "name": "slush-ng-monorepo",
-  "version": "1.0.0-alpha.6",
+  "version": "1.0.0-alpha.7",
   "description": "Angular project scaffolding tool",
   "main": "index.js",
   "scripts": {
