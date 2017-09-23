@@ -1,3 +1,15 @@
+<a name="1.0.0-alpha.9"></a>
+# 1.0.0-alpha.9 (2017-09-23)
+
+* [Feature] Added conventional-changelog ([36bd188](https://github.com/about-code/slush-ng-monorepo/commit/36bd188))
+* [Fix] Lerna should work on ./packages/**/dist/. ([89b99be](https://github.com/about-code/slush-ng-monorepo/commit/89b99be))
+* 1.0.0-alpha.9 ([63e26e3](https://github.com/about-code/slush-ng-monorepo/commit/63e26e3))
+* Add conventional changelog ([11bfe22](https://github.com/about-code/slush-ng-monorepo/commit/11bfe22))
+* Added note about package scopes. ([7efaadb](https://github.com/about-code/slush-ng-monorepo/commit/7efaadb))
+* App-Docs: Document package build command. ([12913e1](https://github.com/about-code/slush-ng-monorepo/commit/12913e1))
+
+
+
 <a name="1.0.0-alpha.8"></a>
 # 1.0.0-alpha.8 (2017-09-23)
 
