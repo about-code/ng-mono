@@ -6,12 +6,12 @@ let process = require('process')
     ,writeConfig = require("../../tasks/write-config")
     ,prompt  = require("../../tasks/prompt");
 
-const KEY = 'project-app'
+const KEY = 'class-ng-module'
 const {packageNameRule, classNameRule} = config.conventions;
 const {packageName, packageScope} = config.defaults;
 
-module.exports = function ngModule() {
-    return prompt([
+module.exports = function module() {
+    return prompt(KEY, [
         {type: "input",   name: "exported_name", required: true,  message: "Module-Class Name (CamelCase):", filter: classNameRule},
         {type: "input",   name: "pkg_fullname",  required: true,  message: "Target package (kebab-case)", default: `${packageScope}/${packageName}`, filter: packageNameRule},
         {type: "confirm", name: "bool_export",   required: false, message: "Should the target package export the module class?", default: 'y'},
@@ -19,7 +19,7 @@ module.exports = function ngModule() {
     ])
     .then(function(answers) {
         let {pkg_fullname, exported_name, bool_export} = answers;
-        let config = {
+        let context = {
             answers: Object.assign(answers, {
                 "internal_path": './' + path.join('src', exported_name)
             }),
@@ -34,7 +34,7 @@ module.exports = function ngModule() {
             },
             writeConfig: {key: KEY}
         }
-        return config;
+        return context;
     })
     .then(copyTemplate)
     .then(processSnippets)

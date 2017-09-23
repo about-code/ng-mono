@@ -10,7 +10,7 @@ const KEY = 'class-ng-component'
 const {packageNameRule, classNameRule, componentSelectorRule, pathRule} = config.conventions;
 const {packageName, packageScope} = config.defaults;
 
-module.exports = function package(done) {
+module.exports = function package() {
     return prompt(KEY, [
         {type: "input",   name: "comp_name",     required: true, message: "Component class name (CamelCase):", filter: classNameRule},
         {type: "input",   name: "comp_selector", required: true, message: "Component Selector (kebab-case):", filter: componentSelectorRule},
@@ -38,6 +38,5 @@ module.exports = function package(done) {
     })
     .then(copyTemplate)
     .then(processSnippets)
-    .then(writeConfig)
-    .then(done);
+    .then(writeConfig);
 };

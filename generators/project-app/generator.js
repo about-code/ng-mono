@@ -12,7 +12,7 @@ const KEY = 'project-app'
 const {packageNameRule} = config.conventions;
 const {packageScope} = config.defaults;
 
-module.exports = function project(done) {
+module.exports = function project() {
     return prompt(KEY, [
         {type: "input",   name: "proj_name",           required: true,  message: "Project name (kebab-case):", filter: packageNameRule},
         {type: "input",   name: "app_ctx_root",        required: true,  message: "App context root (use leading slash):", default: "/", filter: (val) => path.join("/", val, "/").replace(/\\/, "/")},
@@ -74,6 +74,5 @@ module.exports = function project(done) {
     })
     .then(copyTemplate)
     .then(processSnippets)
-    .then(installDeps)
-    .then(done);
+    .then(installDeps);
 };
