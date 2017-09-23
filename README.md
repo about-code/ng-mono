@@ -15,15 +15,15 @@ npm install -g slush git+https://github.com/about-code/slush-ng-monorepo.git
 slush ng-monorepo[:generator]
 ```
 
-`slush ng-monrepo` provides you with a selection of available generators:
+Generators:
 
-- Project
-- Package
-- Module (NgModule)
-- Component (NgComponent)
+- `project`
+- `package`
+- `module` (NgModule)
+- `component` (NgComponent)
 
-> **Important**: Any command apart from 'project' assumes you're in the generated
-project folder at project root.
+> **Important**: Any generator apart from `project` assumes your current
+> working directory is the folder where your project's `package.json` is in.
 
 ## Quickstart
 
@@ -39,15 +39,25 @@ Provide the following answers:
 - Project name: **my-foo**
 - App context root (use leading slash): **/**
 - Title to use in browser tabs: **My Foo Application**
-- NPM Package Scope: **@foo**
+- NPM Package Scope (see important note below): **@foo**
 - Short project description: **A scalable Angular2 application setup**
 - Initial version: **1.0.0**
 - Authorship: **anonymous**
 - Ready: **y**
 
+> **Important:** `ngc` requires a path mapping for package scopes in the
+> generated `tsconfig-aot.json`. The scope provided upon project setup will be
+> added automatically. Other generators below allow to create additional package
+> scopes but currently can't add a `paths` mapping in `tsconfig-aot.json`. If
+> you work with multiple scopes make sure to have a mapping for each of them in
+>`tsconfig-aot.json`.
+
+> **Note:** In the generated app you'll find a document `docs/FILES.md` explaining
+the project directories and a few important config files.
+
 Running the app
 ```
-cd my-foo  // IMPORTANT: any further commands must be run from the project root
+cd my-foo  // subsequent commands must be run from the project root
 npm start
 ```
 You should now be able to navigate to http://localhost:8080/ and see a welcome
@@ -57,12 +67,14 @@ npm run develop
 ```
 to start an unminified debuggable version.
 
-> Note: In the generated app you'll find a document `docs/FILES.md` explaining
-the projects directory layout and most important config files.
-
 ### Creating a feature package
 
-**Once again: we assume you're at your *project root***
+We assume you're in your *project root*.
+
+> **Tip:** We recommend using `git` and committing everytime before running a generator.
+> Not only does it help to find out which files were modified by a generator (`git diff`).
+> It also helps reverting when something went wrong. If you already have `git` installed
+> run `git init` now to create a git repo and then `git commit -am "Initial commit"`.
 
 ```
 slush ng-monorepo:package
@@ -75,24 +87,8 @@ Provide the following answers:
 - Ready: **y**
 
 You should now have a new package *@foo/my-foo-feature* in *./packages* which
-adheres to a minimal layout of a TypeScript NPM package.
-
-At this point you may want to try [ng-packagr](https://github.com/dherges/ng-packagr):
-```
-npm install -g ng-packagr
-cd ./packages/@foo/my-foo-feature
-ng-packagr
-```
-Running *ng-packagr* in a package builds the package according to
-[Angular Package Format](https://docs.google.com/document/d/1CZC2rcpxffTDfRDs6p1cfbmKNLA6x5O-NtkJglDaBVs/preview).
-
-> If you want to publish a package you currently have to run the ng-packagr
-command in each package. Building all packages with a single command is a
-long-term goal.
-
-```
-cd ../../../
-```
+adheres to a minimal layout of a TypeScript NPM package. Run `npm run build-pkg`
+from the project root to build publishable versions of the packages.
 
 ### Creating and exporting an NgModule from a feature package
 ```
@@ -116,10 +112,12 @@ import {FooFeatureModule} from "@foo/foo-feature"
 to ES-import the module class and add `FooFeatureModule` to the `imports`-Section
 of the `@NgModule` decorator.
 
-> **Important:** Note that by ES-importing you created a hard dependency between
-*foo-app* package and *foo-feature* package, so add *foo-feature* to the
-`dependencies` section of *foo-app's* `package.json`.
-
+> **Note:** By ES-importing from *@foo/foo-feature* you created a hard dependency
+> between *@foo/foo-app* and *@foo/foo-feature*. Add *@foo/foo-feature* to the
+> `dependencies` section of *foo-app's* `package.json`. You *could* omit this
+> step and your project would still build. However, if you later want to publish
+> a package an incomplete list of dependencies could cause a bug for third-party
+> consumers.
 
 ### Creating an NgComponent
 ```
