@@ -56,7 +56,7 @@
   "scripts": {
     "clean": "node ./scripts/clean.js",
     "build": "webpack --config ./config/webpack.prod.js",
-    "build:packages": "./scripts/build-packages.js",
+    "build-pkg": "./scripts/build-packages.js",
     "develop": "webpack-dev-server --config ./config/webpack.dev.js --progress",
     "lerna": "lerna",
     "linter-fix": "tslint --fix --project='./tslint.json' --type-check",
