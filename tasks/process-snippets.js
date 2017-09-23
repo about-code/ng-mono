@@ -62,10 +62,10 @@ var path = require("path")
  * You see that `[,]` will be replaced with `,` after the very first instantiation
  * causing any further instantiation to begin with a leading comma.
  */
-module.exports = function (taskConf) {
+module.exports = function (context) {
 
     return new Promise((resolve, reject) => {
-        let { answers, processSnippets } = taskConf;
+        let { answers, processSnippets } = context;
         let { confirm } = answers;
         if (!confirm) {
             reject();
@@ -108,6 +108,6 @@ module.exports = function (taskConf) {
             .pipe(gulp.dest(function(file) {
                 return file.base; // Make sure to write the input file.
             }))
-            .on('end', () => resolve(taskConf));
+            .on('end', () => resolve(context));
     });
 }

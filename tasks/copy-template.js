@@ -26,10 +26,10 @@ const process = require('process')
  *
  * @return Promise
  */
-module.exports = function(taskConf) {
+module.exports = function(context) {
 
     return new Promise((resolve, reject) => {
-        let { answers, copyTemplate } = taskConf;
+        let { answers, copyTemplate } = context;
         let { targetDir, templateDir, install_deps} = copyTemplate;
         let { confirm } = answers;
         if (!confirm) {
@@ -54,7 +54,7 @@ module.exports = function(taskConf) {
                 }
             }))
             .pipe(gulp.dest(targetDir))
-            .on('end', () => resolve(taskConf))
+            .on('end', () => resolve(context))
             .resume();
     });
 };

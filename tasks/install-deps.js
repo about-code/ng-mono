@@ -1,8 +1,8 @@
 var npmi = require("npmi");
 
-module.exports = function(taskConf) {
+module.exports = function(context) {
     return new Promise((resolve, reject) => {
-        let { answers, installDeps } = taskConf;
+        let { answers, installDeps } = context;
         let { auto_install, targetDir } = installDeps;
         let { confirm } = answers;
 
@@ -14,10 +14,10 @@ module.exports = function(taskConf) {
                 if (err) {
                     return reject(err);
                 }
-                return resolve(taskConf);
+                return resolve(context);
             });
         } else {
-            return taskConf;
+            return context;
         }
     });
 }
