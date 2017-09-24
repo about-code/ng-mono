@@ -11,58 +11,62 @@ ${PROJECT_HOME}
   |- package.json
 ```
 
-An exploded view of the project layout reveals some more files which will
+An exploded view of the project structure reveals some more files which will
 be explained below in context of the use case they contribute to.
 
 ```
 ${PROJECT_HOME}
   |- config/
-  |    |- karma.conf.js
-  |    |- karma.shim.js
-  |    |- webpack.common.js
-  |    |- webpack.dev.js
-  |    |- webpack.prod.js
-  |    |- webpack.test.js
+  |    |- karma.conf.js          // Karma Test Runner Config (Unit Tests)
+  |    |- karma.shim.js          // Karma-Angular-Webpack Integration
+  |    |- protractor.js          // Protractor Test Runner Config (E2E-Tests)
+  |    |- webpack.common.js      // Common Bundling Params
+  |    |- webpack.dev.js         // Development-Time Bundling (e.g. no minifcation)
+  |    |- webpack.prod.js        // Production-Build Bundling
+  |    |- webpack.test.js        // Test-Build Bundling
   |
-  |- packages/
-  |    |- @foo/
-  |    |   |- my-foo-app/
+  |- packages/                   // All your source code does belong to here ;-)
+  |    |- @foo/                  // Scoped Package support
+  |    |   |- my-foo-app/        // Your app is a package ...
+  |    |   |- my-foo-feature/    // ... your features are packages.
   |    |   |   |- src/
   |    |   |   |   | ...
   |    |   |   |- index.ts
-  |    |   |   |- package.json
-  |    |   |   |- README.md
+  |    |   |   |- ng-package.json  // Package-Build config (ng-packagr)
+  |    |   |   |- package.json     // package manifest
+  |    |   |   |- README.md        // Be good to your fellows
   |    |   |   | ...
   |    |   | ...
   |    | ...
   |
-  |- src/
+  |- src/                        // Entry Points for Application Projects
   |    |- bundle-app.ts
   |    |- bundle-polyfills.ts
   |    |- bundle-theme.ts
   |    |- bundle-vendor.ts
   |    |- index.html
   |
-  |- tsconfig-aot.json
-  |- tsconfig-jit.json
-  |- tsconfig.json
-  |- lerna.json
-  | ...
+  |- tsconfig-aot.json       // Angular AOT-Build Config for 'ngc'
+  |- tsconfig.json           // TypeScript IDE config
+  |- lerna.json              // Monorepo-Management with lernajs.io
+  |- package.json            // Project manifest. Don't publish projects
+  |- README.md               // Project basics and how to set up dev environment
 ```
 
 ## Use Case: Developing TypeScript
 
-[TypeScript](https://www.typescriptlang.org) is called a *superset of JavaScript*.
-Simply put, its *JavaScript with Types*. TypeScript is *transpiled* into plain
-JavaScript at build-time using the *TypeScript Compiler (tsc)*.  `tsc` applies
-type checking and if necessary provides helpful messages if it infers any
-constraint violations. TypeScript projects typically have a `tsconfig.json` which
-provide tools (e.g build tools, IDEs) with information about the TS project as well
-as `compilerOptions` by which we can configure `tsc`.
+[TypeScript](https://www.typescriptlang.org) is *JavaScript with static typing*.
+TypeScript is *transpiled* into plain JavaScript at build-time using the
+*TypeScript Compiler (tsc)*. It applies type checking and if necessary provides
+helpful messages if it infers any type constraint violations. TypeScript
+projects have a `tsconfig.json` which provide the compiler and IDEs with the
+necessary build params.
 
-To build an *[Angular](https://angular.io/)* application we also need additional
-`tsconfig-[aot|jit].json` files configuring Angular's tsc-Wrapper `ngc` which is
-optimized to transpile Angular apps or libraries for Angular apps.
+To build an *[Angular](https://angular.io/)* application we also need an
+additional `tsconfig-aot.json` file for configuring Angular's custom tsc-wrapper
+`ngc` which is optimized to transpile for Angular apps or libraries. You may only
+need to touch this if you develop `packages/` with more than one package scope
+in the same repo. In this case make sure there's a path mapping for each scope.
 
 ## Use Case: Building with Webpack
 
@@ -106,6 +110,13 @@ Testing Angular projects with Karma requires a few libraries to be available as
 well as a routine to tell Karma where to find the test specifications. Unless
 Karma or Angular don't require any change its **not recommended to make
 modifications** to `config/karma.shim.js`.
+
+## Use Case: End-to-End / UI-Testing with Protractor
+
+[Protractor](http://www.protractortest.org) is a Test-Runner for UI-Tests similar
+to Karma for Unit Tests. It assists with browser automation and provides tools
+like `webdriver-manager` to manage the drivers needed to communicate with the
+browsers. Customize its `config/protractor.js` to fit your testing requirements.
 
 ## Use Case: Publishing Packages
 

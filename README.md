@@ -1,8 +1,8 @@
 # slush-ng-monorepo (Experimental)
 
 A [Slush](https://github.com/slushjs/slush) generator to help setting up an
-Angular2+ multi-package application or library project
-([monorepo](https://github.com/lerna/lerna) style).
+[Angular](https://angular.io) multi-package application or library project with [monorepo](https://github.com/lerna/lerna)
+structure. Sample can be found [here](https://github.com/about-code/slush-ng-monorepo-sample).
 
 ## Installation
 
