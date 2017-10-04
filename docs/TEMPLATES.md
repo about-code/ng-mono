@@ -41,29 +41,4 @@ Use
 |----------------|-------------------------------|
 | `_.gitignore`  | `.gitignore`
 
-
-### Snippet comments (TBD)
-
-
-## Writing or customizing templates
-
-We use [inquirer](github.com/) to ask questions. Answers will be written into
-variables.
-
-```javascript
- return inquirer.prompt([
-        {type: "input",   name: "workspace", message: "Workspace:"},
-        {type: "input",   name: "proj_name", message: "Project name (kebab-case):"},
- ])
- .then((answers) => {
-    // map / compute further answers ...
-    // configure subsequent processing steps
- })
- .then(copyTemplate)
- .then(processSnippets);
-```
-
-Based on answers by a user we may compute further answers. Computation and mapping
-happens inside the inquirer callback prior to copying and processing the templates.
-When all answers are computed a template can be copied and placeholders
-replaced.
+### Snippet Comments (TBD)
