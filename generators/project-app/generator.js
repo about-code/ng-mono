@@ -58,7 +58,7 @@ module.exports = function project() {
         if (bool_default_pkgs) {
             // answer: yes
             context.copyTemplate = {
-                templateDir: path.join(__dirname, "../package-app/template"),
+                templateDir: path.join(__dirname, "./template-app-package"),
                 targetDir:   path.join(process.cwd(), proj_name, 'packages')
             };
             context.processSnippets = {
