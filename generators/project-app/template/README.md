@@ -1,4 +1,4 @@
-# <%= pkg_name %>
+# <%= proj_pkg_fullname %>
 
 <%= pkg_description %>
 

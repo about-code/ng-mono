@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "<%= pkg_fullname %>-project",
+  "name": "<%= proj_pkg_fullname %>",
   "version": "<%= pkg_version %>",
   "description": "<%= pkg_description %>",
   "dependencies": {

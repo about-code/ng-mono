@@ -30,9 +30,10 @@ module.exports = function project() {
         let proj_dir = path.join(process.cwd(), proj_name);
         let context = {
             answers: Object.assign(answers, {
-                "proj_dir": proj_dir,
                 "pkg_name": `${proj_name}-app`,
-                "pkg_fullname": pkg_scope + (pkg_scope ? "/" : "") + proj_name + "-app"
+                "pkg_fullname": pkg_scope + (pkg_scope ? "/" : "") + proj_name + "-app",
+                // "proj_dir": proj_dir,
+                "proj_pkg_fullname": pkg_scope + (pkg_scope ? "/" : "") + proj_name + "-project"
             }),
             copyTemplate: {
                 templateDir: path.join(__dirname, "./template"),
