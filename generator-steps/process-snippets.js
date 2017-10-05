@@ -4,7 +4,27 @@ var path = require("path")
     ,gutil = require("gulp-util")
     ,template = require("gulp-template")
     ,inject = require("gulp-inject-string")
+    ,filter = require("gulp-filter")
     ,plumber = require("gulp-plumber");
+
+const REGEX_COUNTER = /::[0-9]*/;
+
+
+// Note: A regexp. of
+//   (.*)\/[\/\*]\*? ::([0-9]*)([^]*)(\*\/)?
+//   |1-|              |--2---||-3--||--4--|
+// would always have the multi-line-comment stop sequence */ in the third AND
+// fourth capture group, because [^]* in the third group matches basically any
+// character. However, the third capture group must only contain the comment body.
+// So to exclude the */ stop sequence we must do a "positive lookahead" using
+// (?= ) syntax:
+//   (.*)\/[\/\*]\*? ::([0-9]*)([^]*)(?=\*\/)(\*\/)?
+//   |1-|              |--2---||-3--||------||--4--|
+//
+// Now */ won't be longer part of the string of capture group 3.
+const REGEX_MULTILINE_SNIPPET = /(.*)\/\* ::([0-9]*)\n([^]*)(?=\*\/)(\*\/)?/;
+const REGEX_SNIPPET = /(.*)\/\/ ::([0-9]*) (.*)/;
+const REGEX_VAR = /{{([^{}][\s\S]+?)}}/g;
 
 /**
  * Use this to process code snippets within source files. Code snippets are
@@ -65,46 +85,53 @@ var path = require("path")
 module.exports = function (context) {
 
     return new Promise((resolve, reject) => {
-        let { answers, processSnippets } = context;
-        let { confirm } = answers;
-        if (!confirm) {
-            reject();
-        }
+        let currentFile;
+        const { answers, processSnippets } = context;
+        const replacer = function (comment, $1_spaces, $2_counter, $3_snippetTemplate) {
+            if ($2_counter) {
+                $2_counter = parseInt($2_counter) - 1;
+            } else {
+                $2_counter = '';
+            }
+            // Replace [,] with , to include comma with each further instance
+            // Replace counter with new value decremented by one.
+            comment = comment
+                .replace(/\[(,.*)\]/, (str, $1) => `${$1}`)
+                .replace(REGEX_COUNTER, `::${$2_counter}`);
+
+            // Remove [,] from snippet instance
+            // Replace variables in result
+            let snippetInstance = $3_snippetTemplate
+                .replace(/\[,.*\]/, '')
+                .replace(REGEX_VAR, (str, $1_varName) => {
+                    return answers[$1_varName] || str;
+                });
+
+            // Make sure
+            let remainingVars = snippetInstance.match(REGEX_VAR);
+            if (remainingVars && remainingVars.length > 0) {
+                remainingVars.forEach((varName) => {
+                    gutil.log(`WARN: Missing answer for snippet variable ${varName} in ${currentFile}. Skipping whole snippet.`);
+                });
+                return comment;
+            }
+
+            // Re-insert snippet to allow further instances if there's no counter or counter grater 0
+            if (typeof $2_counter === "string" || $2_counter > 0) {
+                return `${$1_spaces}${snippetInstance}\n${comment}`;
+            } else {
+                return `${$1_spaces}${snippetInstance}`;
+            }
+        };
         gulp.src(processSnippets.filesGlob)
             .pipe(plumber())
-            .pipe(inject.replace(/(.*)\/\/ ::([0-9]*) (.*)/, (comment, $1_spaces, $2_counter, $3_snippet) => {
-
-                if ($2_counter) {
-                    $2_counter = parseInt($2_counter) - 1;
-                } else {
-                    $2_counter = '';
-                }
-                // Replace [,] with , to include comma with each further instance
-                // Replace counter with new value decremented by one.
-                comment = comment
-                    .replace(/\[(,.*)\]/, (str, $1) => `${$1}`)
-                    .replace(/\/\/ ::[0-9]*/, `// ::${$2_counter}`);
-
-                // Remove [,] from snippet instance
-                // Replace variables in result
-                let instance = $3_snippet
-                    .replace(/\[,.*\]/, '')
-                    .replace(/{{([^{}][\s\S]+?)}}/g, (str, $1_varName) => {
-                        return answers[$1_varName] || str;
-                    });
-
-                if (/{{([\s\S]+?)}}/.test(instance)) {
-                    gutil.log(`Skipped ${comment} - Some variables could not be resolved. `);
-                    return comment;
-                }
-
-                // Re-insert snippet to allow further instances if there's no counter or counter grater 0
-                if (typeof $2_counter === "string" || $2_counter > 0) {
-                    return `${$1_spaces}${instance}\n${comment}`;
-                } else {
-                    return `${$1_spaces}${instance}`;
-                }
+            .pipe(filter((vinylFile) => {
+                currentFile = vinylFile.path;
+                return true;
             }))
+            // match single-line and multi-line comment snippets
+            .pipe(inject.replace(REGEX_SNIPPET, replacer))
+            .pipe(inject.replace(REGEX_MULTILINE_SNIPPET, replacer))
             .pipe(gulp.dest(function(file) {
                 return file.base; // Make sure to write the input file.
             }))

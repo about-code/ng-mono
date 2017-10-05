@@ -23,7 +23,7 @@ module.exports = {
         classNameRule:         (val) => changeCase.upperCaseFirst(changeCase.camelCase(val)),
         classFileNameRule:     (val) => changeCase.upperCaseFirst(changeCase.camelCase(val)),
         componentSelectorRule: (val) => changeCase.lowerCase(changeCase.paramCase(val)),
-        packageScopeRule:      (val) => '@' + packageNameRule(val.split('/')[0]),
+        packageScopeRule:      (val) => val ? '@' + packageNameRule(val.split('/')[0]) : val,
         packageNameRule:       packageNameRule
     }
 };
