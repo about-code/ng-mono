@@ -1,8 +1,8 @@
 let gulp = require("gulp")
-    ,generatorProject   = require("./generator-generator-steps/project-app/generator")
-    ,generatorPackage   = require("./generator-generator-steps/package-feature/generator")
-    ,generatorModule    = require("./generator-generator-steps/class-ng-module/generator")
-    ,generatorComponent = require("./generator-generator-steps/class-ng-component/generator")
+    ,generatorProject   = require("./generator-tasks/project-app/generator")
+    ,generatorPackage   = require("./generator-tasks/package-feature/generator")
+    ,generatorModule    = require("./generator-tasks/class-ng-module/generator")
+    ,generatorComponent = require("./generator-tasks/class-ng-component/generator")
 
 gulp.task("default", function(done) {
     return inquirer.prompt([
