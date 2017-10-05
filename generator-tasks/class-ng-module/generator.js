@@ -1,10 +1,10 @@
 let process = require('process')
     ,path = require('path')
     ,config = require("../../config.js")
-    ,copyTemplate = require("../../tasks/copy-template")
-    ,processSnippets = require("../../tasks/process-snippets")
-    ,writeConfig = require("../../tasks/write-config")
-    ,prompt  = require("../../tasks/prompt");
+    ,copyTemplate = require("../../generator-steps/copy-template")
+    ,processSnippets = require("../../generator-steps/process-snippets")
+    ,writeConfig = require("../../generator-steps/write-config")
+    ,prompt  = require("../../generator-steps/prompt");
 
 const KEY = 'class-ng-module'
 const {packageNameRule, classNameRule} = config.conventions;

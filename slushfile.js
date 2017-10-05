@@ -1,10 +1,9 @@
 let gulp = require("gulp")
-    ,generatorProject = require("./generators/project-app/generator")
-    ,generatorPackage = require("./generators/package-feature/generator")
-    ,generatorModule  = require("./generators/class-ng-module/generator")
-    ,generatorComponent = require("./generators/class-ng-component/generator")
+    ,generatorProject   = require("./generator-generator-steps/project-app/generator")
+    ,generatorPackage   = require("./generator-generator-steps/package-feature/generator")
+    ,generatorModule    = require("./generator-generator-steps/class-ng-module/generator")
+    ,generatorComponent = require("./generator-generator-steps/class-ng-component/generator")
 
-console.log(process.cwd());
 gulp.task("default", function(done) {
     return inquirer.prompt([
         {type: "list", name: "goal", message: "What do you want to generate?", choices: [

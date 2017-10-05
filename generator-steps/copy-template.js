@@ -6,8 +6,8 @@ const process = require('process')
     ,gutil = require('gulp-util')
     ,plumber = require('gulp-plumber')
     //
-    ,templateFileFilter = require('../plugins/templateFileFilter')
-    ,templateFileRename = require('../plugins/templateFileRename');
+    ,templateFileFilter = require('../gulp-plugins/templateFileFilter')
+    ,templateFileRename = require('../gulp-plugins/templateFileRename');
 
 /**
  * Renaming rules, given answer 'foo' for prompt variable 'some_var':

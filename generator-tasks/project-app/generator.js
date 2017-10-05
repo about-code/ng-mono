@@ -2,11 +2,11 @@ let process = require('process')
     ,path = require('path')
     ,inquirer = require("inquirer")
     ,config = require("../../config.js")
-    ,copyTemplate = require("../../tasks/copy-template")
-    ,processSnippets = require("../../tasks/process-snippets")
-    ,installDeps = require("../../tasks/install-deps")
-    ,writeConfig = require("../../tasks/write-config")
-    ,prompt  = require("../../tasks/prompt");
+    ,copyTemplate = require("../../generator-steps/copy-template")
+    ,processSnippets = require("../../generator-steps/process-snippets")
+    ,installDeps = require("../../generator-steps/install-deps")
+    ,writeConfig = require("../../generator-steps/write-config")
+    ,prompt  = require("../../generator-steps/prompt");
 
 const KEY = 'project-app'
 const {packageNameRule} = config.conventions;
