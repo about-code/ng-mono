@@ -10,7 +10,7 @@
         "removeComments": true,
         "experimentalDecorators": true,
         "baseUrl": ".",
-        //"lib": ["es2015", "dom"],
+        "lib": ["es2015", "dom"],
         "paths": {
             "<%= pkg_scope %>/*": ["./node_modules/<%= pkg_scope %>/*", "./packages/<%= pkg_scope %>/*"]
         }
