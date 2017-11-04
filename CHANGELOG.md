@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.0-alpha.11"></a>
+# [1.0.0-alpha.11](https://github.com/about-code/slush-ng-monorepo/compare/v1.0.0-alpha.10...v1.0.0-alpha.11) (2017-11-04)
+
+
+### Bug Fixes
+
+* Create valid package names, package scopes or component routes / context-route from invalid inputs ([6d1bbcd](https://github.com/about-code/slush-ng-monorepo/commit/6d1bbcd))
+
+
+### Features
+
+* Upgrade app template to Angular 5.0.0 ([edac09d](https://github.com/about-code/slush-ng-monorepo/commit/edac09d))
+
+
+
 <a name="1.0.0-alpha.10"></a>
 # [1.0.0-alpha.10](https://github.com/about-code/slush-ng-monorepo/compare/v1.0.0-alpha.9...v1.0.0-alpha.10) (2017-09-24)
 
