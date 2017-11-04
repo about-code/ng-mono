@@ -15,12 +15,8 @@
             "<%= pkg_scope %>/*": ["./node_modules/<%= pkg_scope %>/*", "./packages/<%= pkg_scope %>/*"]
         }
     },
-    "files": [
-        "./packages/<%= pkg_fullname %>/main-aot.ts",
-        "./packages/<%= pkg_fullname %>/src/AppModule.ts"
-    ],
     "angularCompilerOptions": {
-        "genDir": ".",
+        "entryModule": "./packages/<%= pkg_fullname %>/src/AppModule#AppModule",
         "skipMetadataEmit": true
     }
 }
