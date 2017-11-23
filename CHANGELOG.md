@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.0-alpha.12"></a>
+# [1.0.0-alpha.12](https://github.com/about-code/slush-ng-monorepo/compare/v1.0.0-alpha.11...v1.0.0-alpha.12) (2017-11-23)
+
+### Bug Fixes
+
+* Incorporate ng-packagr-API changes. ([cd5c5d1](https://github.com/about-code/slush-ng-monorepo/commit/cd5c5d1))
+* Add routes via `RouterModule.forChild()` in route modules. ([fff1ae8](https://github.com/about-code/slush-ng-monorepo/commit/fff1ae8))
+
 <a name="1.0.0-alpha.11"></a>
 # [1.0.0-alpha.11](https://github.com/about-code/slush-ng-monorepo/compare/v1.0.0-alpha.10...v1.0.0-alpha.11) (2017-11-04)
 
