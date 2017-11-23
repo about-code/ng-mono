@@ -5,4 +5,4 @@ import {Route, Routes, RouterModule} from "@angular/router";
 export const ROUTES: Routes = [
     // :: [,]{path: "{{comp_route}}", component: {{comp_class}} }
 ];
-export const RoutesModule: ModuleWithProviders = RouterModule.forRoot(ROUTES);
+export const RoutesModule: ModuleWithProviders = RouterModule.forChild(ROUTES);
