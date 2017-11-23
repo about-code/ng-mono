@@ -8,6 +8,9 @@ const ENV = process.env.NODE_ENV = process.env.ENV = 'production';
 ////////////////////////////////////////////////////////////////////////////////
 module.exports = webpackMerge(commonConfig, {
   devtool: 'source-map',
+  entry: {
+    'app': './src/app-aot.ts'
+  },
   plugins: [
     new webpack.DefinePlugin({
       'process.env': { 'ENV': JSON.stringify(ENV) }
