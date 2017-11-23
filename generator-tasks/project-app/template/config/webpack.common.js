@@ -23,9 +23,7 @@ const extractSass = new ExtractTextPlugin({
 // =============== WEBPACK ===============
 module.exports = {
   context: path.resolve(__dirname, '../'),
-  devServer: webpackMerge({
-    stats: 'minimal'
-  }, serverConf),
+  devServer: serverConf,
   entry: {
     'theme': './src/bundle-theme.ts',
     'polyfills': './src/bundle-polyfills.ts',

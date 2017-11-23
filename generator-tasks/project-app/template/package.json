@@ -67,7 +67,7 @@
     "lerna": "lerna",
     "linter-fix": "tslint --fix --project='./tslint.json' --type-check",
     "selenium": "webdriver-manager start",
-    "start": "webpack-dev-server --config ./config/webpack.prod.js --progress --watch=true",
+    "start": "webpack-dev-server --config ./config/webpack.prod.js --watch --progress",
     "test": "./node_modules/karma/bin/karma start ./config/karma.conf.js",
     "test-e2e": "protractor ./config/protractor.js",
     "webdriver-manager": "webdriver-manager"
