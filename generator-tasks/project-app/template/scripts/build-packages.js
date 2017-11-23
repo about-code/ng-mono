@@ -32,7 +32,7 @@ for (let i = 0, len = PACKAGES.length; i < len; i++) {
     rimraf.sync(path.join(package, 'dist'));
 
     tasks.push(ngPackagr
-        .ngPackage({ project })
+        .createNgPackage({ project })
         .then(() => rimraf.sync(path.join(package, '.ng_build')))
         .catch((err) => {
             console.error(`Failed to package "${package}". Cause: `, err);
