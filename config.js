@@ -18,7 +18,12 @@ module.exports = {
         packageName: "foo-feature"
     },
     conventions: {
-        routeRule:             (val) => changeCase.lowerCase(val.replace(/ /, '-')),
+        routeRule:             (val) => changeCase.lowerCase(val
+                                        .replace(/ /, '-')       // replace whitespaces
+                                        .replace(/\\/, "/")      // replace backslashes
+                                        .replace(/\/(.*)/, '$1') // remove leading slash
+                                        .replace(/(.*)\//, '$1') // remove trailing slash
+                               ),
         pathRule:              (val) => changeCase.lowerCase(val),
         classNameRule:         (val) => changeCase.upperCaseFirst(changeCase.camelCase(val)),
         classFileNameRule:     (val) => changeCase.upperCaseFirst(changeCase.camelCase(val)),

@@ -11,7 +11,7 @@ let process = require('process')
 const KEY = 'project-app'
 const {packageNameRule, packageScopeRule, routeRule} = config.conventions;
 const {packageScope} = config.defaults;
-const contextRootRule = (val) => routeRule(path.join("/", val, "/").replace(/\\/, "/"))
+const contextRootRule = (val) => path.join("/", routeRule(val), "/");
 
 module.exports = function project() {
     return prompt(KEY, [
