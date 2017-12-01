@@ -2,13 +2,6 @@
 
 <%= pkg_description %>
 
-# How to build for publishing as a node package
-
-```
-npm install
-npm run build
-```
-
 # How to consume in your app
 
 ## Import via ECMAScript Module Syntax
