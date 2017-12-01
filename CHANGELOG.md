@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.0-alpha.13"></a>
+# [1.0.0-alpha.13](https://github.com/about-code/slush-ng-monorepo/compare/v1.0.0-alpha.12...v1.0.0-alpha.13) (2017-12-01)
+
+
+### Bug Fixes
+
+* Component routes must not begin or end with slash (/) ([ac94ba1](https://github.com/about-code/slush-ng-monorepo/commit/ac94ba1))
+
+
+### Features
+
+* Use latest ng-packagr (2.0.0-rc.4) ([1ba6fc6](https://github.com/about-code/slush-ng-monorepo/commit/1ba6fc6))
+
+
+
 <a name="1.0.0-alpha.12"></a>
 # [1.0.0-alpha.12](https://github.com/about-code/slush-ng-monorepo/compare/v1.0.0-alpha.11...v1.0.0-alpha.12) (2017-11-23)
 
