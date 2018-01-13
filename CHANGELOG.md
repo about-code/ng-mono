@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.0-alpha.14"></a>
+# [1.0.0-alpha.14](https://github.com/about-code/slush-ng-monorepo/compare/v1.0.0-alpha.13...v1.0.0-alpha.14) (2018-01-13)
+
+
+### Bug Fixes
+
+* remove wrong build instructions from feature package ([2e451a4](https://github.com/about-code/slush-ng-monorepo/commit/2e451a4))
+
+
+### Features
+
+* Support asterisk (*) version specifiers in package dependencies ([2a22bc9](https://github.com/about-code/slush-ng-monorepo/commit/2a22bc9))
+
+
+
 <a name="1.0.0-alpha.13"></a>
 # [1.0.0-alpha.13](https://github.com/about-code/slush-ng-monorepo/compare/v1.0.0-alpha.12...v1.0.0-alpha.13) (2017-12-01)
 
