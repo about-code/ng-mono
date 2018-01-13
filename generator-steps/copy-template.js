@@ -3,7 +3,7 @@ const process = require('process')
     ,template = require('gulp-template')
     ,conflict = require('gulp-conflict')
     ,gulp = require('gulp')
-    ,gutil = require('gulp-util')
+    ,log = require('fancy-log')
     ,plumber = require('gulp-plumber')
     //
     ,templateFileFilter = require('../gulp-plugins/templateFileFilter')
@@ -50,7 +50,7 @@ module.exports = function(context) {
             .pipe(templateFileRename(answers))
             .pipe(conflict(targetDir, {
                 logger: function(msg, filename) {
-                    gutil.log(`${msg} ${filename}`);
+                    log(`${msg} ${filename}`);
                 }
             }))
             .pipe(gulp.dest(targetDir))

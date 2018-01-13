@@ -25,6 +25,7 @@
     "npmi": "^4.0.0"
   },
   "devDependencies": {
+    "fancy-log": "^1.3.2",
     "standard-version": "^4.3.0"
   }
 }

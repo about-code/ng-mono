@@ -1,7 +1,7 @@
 var path = require("path")
     ,conflict = require("gulp-conflict")
     ,gulp = require("gulp")
-    ,gutil = require("gulp-util")
+    ,log = require("fancy-log")
     ,template = require("gulp-template")
     ,inject = require("gulp-inject-string")
     ,filter = require("gulp-filter")
@@ -111,7 +111,7 @@ module.exports = function (context) {
             let remainingVars = snippetInstance.match(REGEX_VAR);
             if (remainingVars && remainingVars.length > 0) {
                 remainingVars.forEach((varName) => {
-                    gutil.log(`WARN: Missing answer for snippet variable ${varName} in ${currentFile}. Skipping whole snippet.`);
+                    log.warn(`WARN: Missing answer for snippet variable ${varName} in ${currentFile}. Skipping whole snippet.`);
                 });
                 return comment;
             }
