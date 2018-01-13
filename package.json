@@ -15,16 +15,16 @@
     "change-case": "^3.0.1",
     "gulp": "^3.9.1",
     "gulp-conflict": "^0.4.0",
-    "gulp-filter": "^5.0.0",
-    "gulp-inject-string": "^1.1.0",
-    "gulp-plumber": "^1.1.0",
+    "gulp-filter": "^5.1.0",
+    "gulp-inject-string": "^1.1.1",
+    "gulp-plumber": "^1.2.0",
     "gulp-rename": "^1.2.2",
-    "gulp-template": "^4.0.0",
+    "gulp-template": "^5.0.0",
     "gutil": "^1.6.4",
-    "inquirer": "^3.0.6",
-    "npmi": "^3.0.0"
+    "inquirer": "^5.0.0",
+    "npmi": "^4.0.0"
   },
   "devDependencies": {
-    "standard-version": "^4.2.0"
+    "standard-version": "^4.3.0"
   }
 }
