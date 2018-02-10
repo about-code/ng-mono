@@ -7,12 +7,12 @@ structure. Sample can be found [here](https://github.com/about-code/slush-ng-mon
 ## Installation
 
 ```
-npm install -g slush git+https://github.com/about-code/slush-ng-monorepo.git
+npm install -g git+https://github.com/about-code/slush-ng-monorepo.git
 ```
 
 ## Synopsis
 ```
-slush ng-monorepo[:generator]
+ng-mono
 ```
 
 Generators:

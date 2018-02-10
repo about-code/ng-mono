@@ -1,10 +1,10 @@
 let process = require('process')
     ,path = require('path')
-    ,config = require("../../config.js")
-    ,copyTemplate = require("../../generator-steps/copy-template")
-    ,processSnippets = require("../../generator-steps/process-snippets")
-    ,writeConfig = require("../../generator-steps/write-config")
-    ,prompt  = require("../../generator-steps/prompt");
+    ,copyTemplate = require("../../lib/tools/copy-template")
+    ,processSnippets = require("../../lib/tools/process-snippets")
+    ,writeConfig = require("../../lib/tools/write-config")
+    ,prompt  = require("../../lib/tools/prompt")
+    ,config = require("../../config.js");
 
 const KEY = 'package-feature'
 const {packageNameRule} = config.conventions;
