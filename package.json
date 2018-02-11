@@ -7,7 +7,7 @@
     "ng-mono": "./bin/ng-mono.js"
   },
   "scripts": {
-    "new": "node ./bin/ng-mono.js",
+    "ng-mono": "node ./bin/ng-mono.js",
     "release": "standard-version --prerelease alpha",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
