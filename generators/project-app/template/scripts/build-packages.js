@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const rimraf = require('rimraf');
-const ngPackagr = require('../node_modules/ng-packagr/lib/ng-packagr');
+const ngPackagr = require('ng-packagr');
 const getPackagesWithFile = require('./helpers/getPackagesWithFile');
 const copyProjectDependencyVersions = require('./helpers/copyProjectDependencyVersions');
 
