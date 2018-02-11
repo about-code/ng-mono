@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.0-alpha.15"></a>
+# [1.0.0-alpha.15](https://github.com/about-code/ng-mono/compare/v1.0.0-alpha.14...v1.0.0-alpha.15) (2018-02-11)
+
+
+### Features
+
+* Make self executable ([e0a5441](https://github.com/about-code/ng-mono/commit/e0a5441))
+* Update project template to use ng-packagr ~2.0.0 ([ee6f50b](https://github.com/about-code/ng-mono/commit/ee6f50b))
+
+
+
 <a name="1.0.0-alpha.14"></a>
 # [1.0.0-alpha.14](https://github.com/about-code/ng-mono/compare/v1.0.0-alpha.13...v1.0.0-alpha.14) (2018-01-13)
 
