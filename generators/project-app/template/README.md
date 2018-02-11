@@ -39,3 +39,6 @@ Use `npm run lerna -- publish` to version packages (see [lernajs.io](https://ler
 
 - **Convention:** E2E test specs must end with `.e2e-spec.ts`
 - **Note:** To customize the setup edit `config/protractor.js`.
+
+## Further Reading
+- Building Angular Libraries (https://www.youtube.com/watch?v=unICbsPGFIA)
