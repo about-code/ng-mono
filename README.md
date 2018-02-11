@@ -1,13 +1,13 @@
-# slush-ng-monorepo (Experimental)
+# ng-mono
 
-A [Slush](https://github.com/slushjs/slush) generator to help setting up an
-[Angular](https://angular.io) multi-package application or library project with [monorepo](https://github.com/lerna/lerna)
-structure. Sample can be found [here](https://github.com/about-code/slush-ng-monorepo-sample).
+A generator to help setting up an [Angular](https://angular.io) multi-package
+application or library project with [monorepo](https://github.com/lerna/lerna)
+structure. Sample can be found [here](https://github.com/about-code/ng-mono-sample).
 
 ## Installation
 
 ```
-npm install -g git+https://github.com/about-code/slush-ng-monorepo.git
+npm install -g git+https://github.com/about-code/ng-mono.git
 ```
 
 ## Synopsis
@@ -32,7 +32,12 @@ Let's setup a project with a feature package, an *NgModule* and an *NgComponent*
 ### Setting up the project
 
 ```
-slush ng-monorepo
+ng-mono
+
+> Project
+  Package
+  Module
+  Component
 ```
 
 Provide the following answers:
@@ -69,7 +74,7 @@ to start an unminified debuggable version.
 
 ### Creating a feature package
 
-We assume you're in your *project root*.
+We assume you're in your *project root* now.
 
 > **Tip:** We recommend using `git` and committing everytime before running a generator.
 > Not only does it help to find out which files were modified by a generator (`git diff`).
@@ -77,7 +82,12 @@ We assume you're in your *project root*.
 > run `git init` now to create a git repo and then `git commit -am "Initial commit"`.
 
 ```
-slush ng-monorepo:package
+ng-mono
+
+  Project
+> Package / Library,
+  Module
+  Component
 ```
 Provide the following answers:
 - NPM Package name: **@foo/my-foo-feature**
@@ -92,7 +102,12 @@ from the project root to build publishable versions of the packages.
 
 ### Creating and exporting an NgModule from a feature package
 ```
-slush ng-monorepo:module
+ng-mono
+
+  Project
+  Package / Library,
+> Module
+  Component
 ```
 Provide the following answers:
 - Module class name: **FooFeatureModule**
@@ -121,7 +136,12 @@ of the `@NgModule` decorator.
 
 ### Creating an NgComponent
 ```
-slush ng-monorepo:component
+ng-mono
+
+  Project
+  Package / Library,
+  Module
+> Component
 ```
 Provide the following answers:
 - Component class name (CamelCase): **FooComponent**

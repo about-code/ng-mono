@@ -3,3 +3,4 @@ npm-debug.log
 dist
 logs
 *gitignore.*
+ng-mono.json

@@ -1,6 +1,6 @@
 # Writing Generators
 
-Generators can be thought of as *gulp task* functions which return a promise. The
+Generators are functions which return a promise. The
 promise should resolve once the generator task has finished its scaffolding work.
 
 > **Note:** By the term *generator* we refer to a design concept within this project,
@@ -42,7 +42,8 @@ configurations for each subsequent step in the `then()`-chain.
 
 If you're familiar with gulp then you might compare generator-tasks to an actual
 gulp task function and steps to *micro-task* functions which are invoked as part
-of the actual task. Step functions receive the context object and must return a promise which
+of the actual task. In above snippet `copyTemplate` or `processSnippets` are
+step functions. They receive the context object and must return a promise which
 resolves to the context object again. This contract enables generator steps
 to be chained in `then()` function calls like shown in the example above.
 

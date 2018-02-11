@@ -22,7 +22,9 @@ Use
 ## File Template Instantiation Rules
 
 File templates can be instantiated by generators using the `copy-template`
-generator step.
+generator step. Sometimes it's necessary to create a target folder structure based
+on user input. The following examples outline some syntax options and their result
+based on whether a user has provided a value for an input variable or not:
 
 **Value `"foo"` for a variable `some_var`**
 
@@ -49,9 +51,8 @@ generator step.
 ## Snippet Comment Instantiation Rules
 
 Snippet comments can be instantiated by generators using the `process-snippets`
-generator step. Snippet placeholders use the `{{...}}` syntax.
-
-Snippet comments are identified by the character sequence `// :: ` or `/* :: `.
+function. Snippet placeholders use the `{{...}}` syntax. They are identified by
+the character sequence `// :: ` or `/* :: ` for multiline snippets.
 The colons may be followed by a number indicating how often a snippet can be
 intantiated before it is removed. For example, the snippet
 ```js
@@ -60,7 +61,7 @@ intantiated before it is removed. For example, the snippet
 can be instantiated only once. Then its counter is reduced to 0 and it will be
 removed after the snippet has been instantiated.
 
- > **Important** The colons and colon-counter-group must be surrounded by white spaces: `// ::1 baz` instad of e.g. `//::1 baz`.
+ > **Important** The colons and colon-counter-group must be surrounded by white spaces: `// ::1 baz` instad of e.g. `//::1baz`.
 
 The following comment can be instantiated two times:
 ```js

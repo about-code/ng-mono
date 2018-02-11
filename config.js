@@ -13,7 +13,7 @@ const packageNameRule = (val) => {
 module.exports = {
     defaults: {
         // Some Defaults
-        settingsFile: 'slush-ng-monorepo.json',
+        settingsFile: 'ng-mono.json',
         packageScope: "@foo",
         packageName: "foo-feature"
     },

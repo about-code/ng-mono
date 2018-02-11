@@ -11,7 +11,7 @@
     "release": "standard-version --prerelease alpha",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": "generator, angular, scaffold, monorepo, mono-repo, ng, cli, gulp",
+  "keywords": "generator, angular, scaffold, monorepo, mono repo, ng, cli, gulp",
   "author": "about-code@users.noreply.github.com",
   "license": "SEE LICENSE IN LICENSE.txt",
   "dependencies": {
