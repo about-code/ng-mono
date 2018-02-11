@@ -1,10 +1,14 @@
 #! /usr/bin/env node
 
-let inquirer = require("inquirer")
+let process = require("process")
+    ,path = require("path")
+    ,inquirer = require("inquirer")
     ,generatorProject   = require("../generators/project-app/generator")
     ,generatorPackage   = require("../generators/package-feature/generator")
     ,generatorModule    = require("../generators/class-ng-module/generator")
-    ,generatorComponent = require("../generators/class-ng-component/generator")
+    ,generatorComponent = require("../generators/class-ng-component/generator");
+
+applyArguments();
 
 return inquirer
     .prompt([{type: "list", name: "goal", message: "What do you want to generate?", choices: [
@@ -22,3 +26,16 @@ return inquirer
             case "Component": return generatorComponent();
         }
     });
+
+
+function applyArguments() {
+    let cwd = "";
+    if (process.argv.length >= 3) {
+        cwd = process.argv[2];
+    }
+    try {
+        process.chdir(path.join(process.cwd(), cwd));
+    } catch (err) {
+        console.log(err);
+    }
+}
