@@ -17,13 +17,12 @@ ng-mono
 
 Generators:
 
-- `project`
-- `package`
-- `module` (NgModule)
-- `component` (NgComponent)
+- `Project`
+- `Package / Library`
+- `Module` (NgModule)
+- `Component` (NgComponent)
 
-> **Important**: Any generator apart from `project` assumes your current
-> working directory is the folder where your project's `package.json` is in.
+> **Important**: Any generator apart from `Project` assumes the command's *working directory* is your project root directory.
 
 ## Quickstart
 
@@ -50,15 +49,16 @@ Provide the following answers:
 - Authorship: **anonymous**
 - Ready: **y**
 
-> **Important:** `ngc` requires a path mapping for package scopes in the
-> generated `tsconfig-aot.json`. The scope provided upon project setup will be
-> added automatically. Other generators below allow to create additional package
-> scopes but currently can't add a `paths` mapping in `tsconfig-aot.json`. If
-> you work with multiple scopes make sure to have a mapping for each of them in
->`tsconfig-aot.json`.
-
 > **Note:** In the generated app you'll find a document `docs/FILES.md` explaining
 the project directories and a few important config files.
+
+> **Important:** `ngc` requires a path mapping for npm package scopes in the
+> generated `tsconfig*.json`. The scope provided upon project setup will be
+> added automatically. Other generators below allow to create additional package
+> scopes but currently can't add a `paths` mapping in `tsconfig*.json`. If
+> you generate packages with different package scopes than provided to the *Project*
+> generator, make sure to manually provide a mapping for each scope in
+> `tsconfig*.json` files.
 
 Running the app
 ```
