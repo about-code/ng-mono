@@ -7,7 +7,7 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class <%= comp_class %> implements OnInit, OnDestroy {
 
-    private _route: ActivatedRoute = null;
+    private _route: ActivatedRoute | null = null;
 
     constructor(route: ActivatedRoute) {
         this._route = route;

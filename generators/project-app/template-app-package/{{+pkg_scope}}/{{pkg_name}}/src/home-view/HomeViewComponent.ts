@@ -7,7 +7,7 @@ import {ActivatedRoute, Params} from "@angular/router";
 })
 export class HomeViewComponent implements OnInit {
 
-    private _route: ActivatedRoute = null;
+    private _route: ActivatedRoute | null  = null;
 
     constructor(route: ActivatedRoute) {
         this._route = route;
