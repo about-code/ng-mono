@@ -26,7 +26,8 @@ Generators:
 
 ## Quickstart
 
-Let's setup a project with a feature package, an *NgModule* and an *NgComponent*.
+Let's set up a [sample project](https://github.com/about-code/ng-mono-sample)
+with a feature package, an *NgModule* and an *NgComponent*.
 
 ### Setting up the project
 
@@ -174,7 +175,9 @@ previous step you can rebuild the project (if you didn't watch with `npm run dev
 and directly navigate to `http://localhost:8080/foo/`.
 
 **Where to go next?**
-We have created a project which shows how to setup an Angular project with mono-repo
-project structure. Have a look into `README.md` of the sample project you created.
-It describes some details of the project and advanced workflows such as
-building and publishing your feature packages to share them with others.
+
+Your sample project should look like [ng-mono-sample](https://github.com/about-code/ng-mono-sample) now.
+We have created a project which shows how to setup an Angular project with a
+mono-repo project structure. Have a look at the `README.md` of the sample project.
+It describes how to proceed with advanced workflows such as testing or building
+and publishing your feature packages to share them with others.
