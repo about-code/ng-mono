@@ -4,9 +4,9 @@
 
 ## Building and bundling an app from packages
 
-- Build and serve production build: `npm start`
-- Build and serve development build: `npm run debug`
-- Build production bundle: `npm run build`
+- Build optimized production bundle: `npm run build`
+- Build and serve optimized production build: `npm run build-serve`
+- Build and serve debuggable development build: `npm start`
 
 ### Building packages for reuse
 

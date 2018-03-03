@@ -73,7 +73,7 @@ module.exports = {
     extractSass
     ,new CleanWebpackPlugin([outputPath])
     ,new AngularCompilerPlugin({
-      tsConfigPath: './tsconfig-aot.json',
+      tsConfigPath: './tsconfig.json',
     })
     // Workaround for angular/angular#11580
     ,new webpack.ContextReplacementPlugin(
@@ -90,6 +90,5 @@ module.exports = {
         minimize: false // workaround for ng2
       }
     })
-    ,new webpack.NoEmitOnErrorsPlugin(),
   ]
 };
