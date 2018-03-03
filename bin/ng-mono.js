@@ -3,13 +3,16 @@
 let process = require("process")
     ,path = require("path")
     ,inquirer = require("inquirer")
+    ,pkg = require("../package.json")
     ,generatorProject   = require("../generators/project-app/generator")
     ,generatorPackage   = require("../generators/package-feature/generator")
     ,generatorModule    = require("../generators/class-ng-module/generator")
     ,generatorComponent = require("../generators/class-ng-component/generator");
 
+console.log(`
+${pkg.name} ${pkg.version}
+------------------------------------------------`);
 applyArguments();
-
 return inquirer
     .prompt([{type: "list", name: "goal", message: "What do you want to generate?", choices: [
             "Project",
