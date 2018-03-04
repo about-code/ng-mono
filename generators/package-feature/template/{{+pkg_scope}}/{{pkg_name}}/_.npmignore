@@ -1,3 +1,6 @@
+*.gitignore.*
 src
-.ng_build
-*gitignore.*
+!dist/src
+index.ts
+tsconfig.json
+ng-package.json
