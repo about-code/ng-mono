@@ -19,7 +19,7 @@ module.exports = function project() {
         {type: "input",   name: "app_ctx_root",        required: true,  message: "App context root (use leading slash):", default: "/", filter: contextRootRule},
         {type: "input",   name: "app_title",           required: false, message: "Title to use in browser tabs:", default: (answers) => answers.proj_name},
         {type: "input",   name: "pkg_scope",           required: true,  message: `NPM Package Scope e.g. ${packageScope} (kebab-case):`, filter: packageScopeRule},
-        {type: "input",   name: "pkg_description",     required: false, message: "Short project description (max. one sentence):"},
+        {type: "input",   name: "pkg_description",     required: false, message: "Short project description (max. one sentence):", default: "Project generated with https://github.com/about-code/ng-mono"},
         {type: "input",   name: "pkg_version",         required: true,  message: "Initial version:", default: "0.0.0"},
         {type: "input",   name: "pkg_author",          required: false, message: "Authorship:", default: "anonymous"},
         {type: "confirm", name: "bool_default_pkgs",   required: false, message: "Generate app and theme package?", default: "n"},
