@@ -4,15 +4,31 @@
   "author": "<%= pkg_author %>",
   "license": "SEE LICENSE IN LICENSE.txt",
   "description": "",
-  "main": "<%= pkg_fullname %>.es5.umd.js",
-  "module": "<%= pkg_fullname %>.es5.js",
-  "es2015": "<%= pkg_fullname %>.js",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "es2015": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "dependencies": {},
   "peerDependencies": {
+    "@angular/animation": "*",
+    "@angular/common": "*",
+    "@angular/compiler": "*",
     "@angular/core": "*",
+    "@angular/forms": "*",
+    "@angular/http": "*",
+    "@angular/platform-browser": "*",
+    "@angular/platform-browser-dynamic": "*",
+    "@angular/router": "*",
     "rxjs": "*",
     "zone.js": "*",
     "typescript": "*"
   },
-  "optionalDependencies": {}
+  "optionalDependencies": {
+    "ng-packagr": "*"
+  },
+  "scripts": {
+    "clean": "rm -r ./dist",
+    "tsc": "tsc -p tsconfig.json",
+    "ng-packagr": "ng-packagr"
+  }
 }
