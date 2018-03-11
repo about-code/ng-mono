@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.0-alpha.16"></a>
+# [1.0.0-alpha.16](https://github.com/about-code/ng-mono/compare/v1.0.0-alpha.15...v1.0.0-alpha.16) (2018-03-11)
+
+
+### Bug Fixes
+
+* Compiler error "No NgModule metadata found" ([88cef1f](https://github.com/about-code/ng-mono/commit/88cef1f))
+* TS strict mode compatibility ([02e6507](https://github.com/about-code/ng-mono/commit/02e6507))
+
+
+### Features
+
+* print version number ([d2b2b2e](https://github.com/about-code/ng-mono/commit/d2b2b2e))
+* Project-Generator: tsconfig options as of TS 2.7 ([3750f2f](https://github.com/about-code/ng-mono/commit/3750f2f))
+* upgrade to webpack 4.0.1 ([bccf523](https://github.com/about-code/ng-mono/commit/bccf523))
+
+
+
 <a name="1.0.0-alpha.15"></a>
 # [1.0.0-alpha.15](https://github.com/about-code/ng-mono/compare/v1.0.0-alpha.14...v1.0.0-alpha.15) (2018-02-11)
 
