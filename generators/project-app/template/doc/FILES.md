@@ -27,6 +27,8 @@ ${PROJECT_HOME}
   |    |- index.html
   |
   |- package.json               // project manifest
+  |- tsconfig.json              // TypeScript configuration
+  |- ...
 ```
 
 The `src/` folder contains the application shell. It is required when developing and bundling an application but may also be used as a test-bed when developing libraries. When bundling external libraries or polyfills within an application, then import them into `bundle-vendor.ts` or `bundle-polyfills.ts` (see e.g [angular.io](https://angular.io))
@@ -35,7 +37,7 @@ The `src/` folder contains the application shell. It is required when developing
 
 Feature packages (e.g. *my-foo-feature*) **should** be structured according to NPM
 package best practices. They live inside the *packages* folder. We suggest a
-structure like the one below for [scoped packages](https://docs.npmjs.com/getting-started/scoped-packages). A package **must** exhibit a *facade module* (index-file) which exports a package's public API. Package consumers **must not** reach out into a package's `/src` folder via `import` statements.
+structure like the one below for [scoped packages](https://docs.npmjs.com/getting-started/scoped-packages).
 ```
 ${PROJECT_HOME}
   |- packages/
@@ -43,16 +45,18 @@ ${PROJECT_HOME}
   |        |- my-foo-app/            // Your app package
   |        |- my-foo-feature/        // your feature packages
   |              |- src/             // required - the actual package source code
-  |              |- index.ts         // required - public api surface
+  |              |- index.ts         // required - facade moudle with public api surface
   |              |- .npmignore       // optional - may be required when publishing package
   |              |- .gitignore       // optional - may be required when moving to a separate repo
   |              |- LICENSE.txt      // optional - required when publishing a package
   |              |- ng-package.json  // optional - ng-packagr config to build a package for publishing
   |              |- package.json     // optional - required when publishing package
   |              |- README.md        // required - how to use the package api (see note below)
-  |- src/
-  |- package.json
+  |- ...
 ```
+ A package **must** exhibit a *facade module* (index.{ts|mjs}) which exports a package's public API. Package consumers **must not** import modules which were not (re-)exported by the facade module. Otherwise they are reaching out into the package's *private* API.
+
+ > The project's `tsconfig.json` is configured in a way that it enables VSCode's auto-import feature to correctly resolve the package name if you attempt to import an export of e.g. *my-foo-feature* in *my-foo-app*. If VSCode doesn't resolve the package name `@foo/my-foo-feature` but a *relative* path across the boundary of *my-foo-app*, e.g. `../../my-foo-feature/src/FooClass` then this is a **strong indication** that the class being imported by *my-foo-app* wasn't exported by the facade module of *my-foo-feature*. You should then either add *FooClass* to *my-foo-feature*'s public API or rethink if you really want to violate the public contract.
 
 > **Note** The `README.md` of feature packages should be written as if the package would be developed separately in its own repository. However, as long as it is developed within a monorepo project structure, the build instructions of the monorepo project should be considered first.
 
