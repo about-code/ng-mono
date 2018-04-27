@@ -10,7 +10,7 @@
   "types": "./dist/index.d.ts",
   "dependencies": {},
   "peerDependencies": {
-    "@angular/animation": "*",
+    "@angular/animations": "*",
     "@angular/common": "*",
     "@angular/compiler": "*",
     "@angular/core": "*",
