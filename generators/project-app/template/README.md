@@ -2,11 +2,17 @@
 
 <%= pkg_description %>
 
+## Installing
+
+- get the sources from version control
+- `cd` into project folder
+- run `npm install`
+
 ## Building and bundling an app from packages
 
-- Build optimized production bundle: `npm run build`
-- Build and serve optimized production build: `npm run build-serve`
-- Build and serve debuggable development build: `npm start`
+- build optimized production bundle: `npm run build`
+- build and serve optimized production build: `npm run build-serve`
+- build and serve debuggable development build: `npm start`
 
 ### Building packages for reuse
 
