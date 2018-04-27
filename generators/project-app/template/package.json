@@ -41,7 +41,7 @@
     "karma-jasmine-html-reporter": "^0.2.2",
     "karma-webpack": "~2.0.5",
     "lerna": "^2.4.0",
-    "ng-packagr": "~2.0.0",
+    "ng-packagr": "~2.4.0",
     "node-sass": "^4.5.3",
     "protractor": "~5.2.2",
     "raw-loader": "^0.5.1",
@@ -52,10 +52,10 @@
     "ts-node": "~4.1.0",
     "tslint": "~5.7.0",
     "typescript": "^2.7.2",
-    "webpack": "^4.0.1",
-    "webpack-cli": "^2.0.10",
-    "webpack-dev-server": "^3.1.0",
-    "webpack-merge": "^4.1.0"
+    "webpack": "4.2.0",
+    "webpack-cli": "2.0.10",
+    "webpack-dev-server": "3.1.0",
+    "webpack-merge": "4.1.0"
   },
   "main": "index.js",
   "scripts": {
