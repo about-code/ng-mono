@@ -2,7 +2,7 @@ import {Component, OnInit} from "@angular/core";
 import {Router} from "@angular/router";
 
 @Component({
-    selector: "<%= pkg_name %>",
+    selector: "ng-app",
     templateUrl: "./AppComponent.html"
 })
 export class AppComponent implements OnInit {
