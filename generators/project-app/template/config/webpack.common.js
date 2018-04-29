@@ -17,7 +17,7 @@ try {
 // =============== SASS ===============
 const outputPath = path.resolve(__dirname, '../', 'dist');
 const extractSass = new ExtractTextPlugin({
-    filename: "[name].[contenthash].css",
+    filename: "[name].[hash].css",
     disable: process.env.NODE_ENV === "development"
 });
 // =============== WEBPACK ===============
