@@ -1,17 +1,28 @@
-module.exports = {
-    // Webpack-Dev-Server config:
-    // https://webpack.js.org/configuration/dev-server/
-    historyApiFallback: true
-    // ,port: 8000
-    // ,proxy: {
-    //     // HTTP proxy middleware config:
-    //     // https://www.npmjs.com/package/http-proxy-middleware
-    //     "/api": {
-    //         target: "http://localhost:8888/"
-    //         ,headers: {
-    //             "Authorization": "Basic ..."
-    //         }
-    //     }
-    // }
+const convert = require('koa-connect');
+const history = require('connect-history-api-fallback');
+const proxy = require('http-proxy-middleware');
 
+module.exports = {
+    // webpack-serve options
+    // see https://github.com/webpack-contrib/webpack-serve#add-on-features
+
+    add: (app, middleware, options) => {
+        // DEEP-LINKING-SUPPORT
+        app.use(convert(history({
+            // connect-history-api-fallback options
+            // see https://github.com/bripkens/connect-history-api-fallback#options
+        })));
+
+        // PROXY-SETTINGS
+        // app.use(convert(proxy({
+        //     // HTTP proxy middleware options
+        //     // see https://www.npmjs.com/package/http-proxy-middleware
+        //     '/api': {
+        //         target: 'http://localhost:8081'
+        //         // , headers: {
+        //         //     "Authorization": "Basic ..."
+        //         // }
+        //     }
+        // })));
+    }
 }

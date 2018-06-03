@@ -39,6 +39,7 @@
     "paths": {                             /* A series of entries which re-map imports to lookup locations relative to the 'baseUrl'. */
       "*": ["*", "../node_modules/*"]
     },
+    // "resolveJsonModule": true,             /* since 1.9: allows for importing, extracting types from and generating .json files */
     // "rootDirs": [],                        /* List of root folders whose combined content represents the structure of the project at runtime. */
     // "typeRoots": [],                       /* List of folders to include type definitions from. */
     // "types": [],                           /* Type declaration files to be included in compilation. */
@@ -58,6 +59,7 @@
   },
   "angularCompilerOptions": {
     "entryModule": "./packages/<%= pkg_fullname %>/src/AppModule#AppModule",
+    "enableResourceInlining": false,
     "skipMetadataEmit": true
   }
 }

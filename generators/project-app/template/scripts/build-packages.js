@@ -20,7 +20,7 @@ for (let i = 0, len = PACKAGES.length; i < len; i++) {
     rimraf.sync(path.join(package, 'dist'));
 
     tasks.push(ngPackagr
-        .createNgPackage({ project })
+        .build({ project })
         .then(() => rimraf.sync(path.join(package, '.ng_build')))
         .then(() => copyProjectDependencyVersions(package))
         .catch((err) => {

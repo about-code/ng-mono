@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.1.0"></a>
+# [1.1.0](https://github.com/about-code/ng-mono/compare/v1.0.0...v1.1.0) (2018-06-03)
+
+
+### Bug Fixes
+
+* [contenthash] error with webpack 4 ([cc97a63](https://github.com/about-code/ng-mono/commit/cc97a63))
+
+
+### Features
+
+* Add install section to project template ([8f28c54](https://github.com/about-code/ng-mono/commit/8f28c54))
+* Migrate from webpack-dev-server to webpack-serve ([c89e811](https://github.com/about-code/ng-mono/commit/c89e811))
+* Upgrade Dependencies to Angular v6 ([92c19e9](https://github.com/about-code/ng-mono/commit/92c19e9))
+
+
+
 <a name="1.0.0-alpha.16"></a>
 # [1.0.0-alpha.16](https://github.com/about-code/ng-mono/compare/v1.0.0-alpha.15...v1.0.0-alpha.16) (2018-03-11)
 

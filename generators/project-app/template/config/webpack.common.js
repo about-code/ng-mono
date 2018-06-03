@@ -23,7 +23,7 @@ const extractSass = new ExtractTextPlugin({
 // =============== WEBPACK ===============
 module.exports = {
   context: path.resolve(__dirname, '../'),
-  devServer: serverConf,
+  serve: serverConf,
   entry: {
     'theme': './src/bundle-theme.ts',
     'polyfills': './src/bundle-polyfills.ts',
