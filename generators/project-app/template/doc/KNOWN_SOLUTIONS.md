@@ -1,4 +1,10 @@
-# Known Issues
+# Known Solutions
+
+If you plan to modify the initial configuration there's always some risk of
+running into errors where messages might not be self-explanatory or things stop
+to work as expected. This page covers some errors we've come accross while
+making the app template and what we have identified to be the reasons and
+possible solutions.
 
 **Module not found: Error can't resolve '[you-name-it].ngfactory'**
 
