@@ -62,7 +62,7 @@ module.exports = {
   },
 
   plugins: [
-    new CleanWebpackPlugin([outputPath])
+    new CleanWebpackPlugin([outputPath], { allowExternal: true })
     ,new AngularCompilerPlugin({
       tsConfigPath: './tsconfig.json',
     })
