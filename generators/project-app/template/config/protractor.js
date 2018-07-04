@@ -3,7 +3,7 @@ let path = require('path');
 // An example configuration file
 exports.config = {
   // The address of a running selenium server.
-  seleniumAddress: 'http://localhost:4444/wd/hub',
+  //seleniumAddress: 'http://localhost:4444/wd/hub',
   seleniumArgs: [],
   jvmArgs: [],
   // Capabilities to be passed to the webdriver instance.
@@ -15,8 +15,8 @@ exports.config = {
   // to protractor (in this example conf.js).
   // They may include glob patterns.
   specs: [
-      '../src/**/*e2e.{ts,js}',
-      '../packages/**/*e2e.{ts,js}'
+      '../src/**/*-e2e.{ts,js}',
+      '../packages/**/*-e2e.{ts,js}'
   ],
 
   // Options to be passed to Jasmine-node.

@@ -41,7 +41,7 @@ Use `npm run lerna -- publish` to version packages (see [lernajs.io](https://ler
 1. Run Application (console 1): `npm start`
 1. Run Tests locally (console 2): `npm run test-e2e`
 
-- **Convention:** E2E test specs must end with `.e2e-spec.ts`
+- **Convention:** E2E test specs must end with `-e2e.ts`
 - **Note:** To customize the setup edit `config/protractor.js`.
 
 ## Further Reading
