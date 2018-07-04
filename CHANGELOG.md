@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.2.0"></a>
+# [1.2.0](https://github.com/about-code/ng-mono/compare/v1.1.0...v1.2.0) (2018-07-04)
+
+
+### Bug Fixes
+
+* E2E-Tests not running ([3d3d0dd](https://github.com/about-code/ng-mono/commit/3d3d0dd))
+* Project Template: /dist folder is not cleaned on build ([b9a1db9](https://github.com/about-code/ng-mono/commit/b9a1db9))
+
+
+### Features
+
+* App-Template: Karma Unit Tests with Coverage Report ([1a75655](https://github.com/about-code/ng-mono/commit/1a75655))
+* Don't require to start selenium server manually ([7bb3573](https://github.com/about-code/ng-mono/commit/7bb3573))
+* New command 'npm run linter' ([b39084c](https://github.com/about-code/ng-mono/commit/b39084c))
+* Project Template: Dependencies updated. ([02c6e2c](https://github.com/about-code/ng-mono/commit/02c6e2c))
+
+
+
 <a name="1.1.0"></a>
 # [1.1.0](https://github.com/about-code/ng-mono/compare/v1.0.0...v1.1.0) (2018-06-03)
 
