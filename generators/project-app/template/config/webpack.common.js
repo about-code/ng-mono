@@ -1,10 +1,12 @@
 var path = require('path');
 var webpack = require('webpack');
-var webpackMerge = require('webpack-merge');
 var AngularCompilerPlugin = require('@ngtools/webpack').AngularCompilerPlugin;
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var MiniCssExtractPlugin = require('mini-css-extract-plugin');
 var CleanWebpackPlugin = require('clean-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+
+const devMode = process.env.ENV === 'development';
+const outputPath = path.resolve(__dirname, '../', 'dist');
 
 // =============== DEV-SERVER ===============
 var serverConf;
@@ -14,12 +16,6 @@ try {
 } catch (err) {
   serverConf = require('./webpack.server.js');
 }
-// =============== SASS ===============
-const outputPath = path.resolve(__dirname, '../', 'dist');
-const extractSass = new ExtractTextPlugin({
-    filename: "[name].[hash].css",
-    disable: process.env.NODE_ENV === "development"
-});
 // =============== WEBPACK ===============
 module.exports = {
   context: path.resolve(__dirname, '../'),
@@ -55,23 +51,18 @@ module.exports = {
         loader: 'file-loader?name=assets/[name].[hash].[ext]'
       }
       ,{
-        test: /\.scss$/,
-        use: extractSass.extract({
-            use: [{
-                loader: "css-loader"
-            }, {
-                loader: "sass-loader"
-            }],
-            // use style-loader in development
-            fallback: "style-loader"
-        })
+        test: /\.(sa|sc|c)ss$/,
+        use: [
+          devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
+          'css-loader',
+          'sass-loader',
+        ]
       }
     ]
   },
 
   plugins: [
-    extractSass
-    ,new CleanWebpackPlugin([outputPath])
+    new CleanWebpackPlugin([outputPath])
     ,new AngularCompilerPlugin({
       tsConfigPath: './tsconfig.json',
     })
@@ -84,6 +75,12 @@ module.exports = {
     )
     ,new HtmlWebpackPlugin({
       template: './src/index.html'
+    })
+    ,new MiniCssExtractPlugin({
+      // Options similar to the same options in webpackOptions.output
+      // both options are optional
+      filename: devMode ? "[name].css" : "[name].[hash].css",
+      chunkFilename: devMode ? "[id].css": "[id].[hash].css"
     })
     ,new webpack.LoaderOptionsPlugin({
       htmlLoader: {
