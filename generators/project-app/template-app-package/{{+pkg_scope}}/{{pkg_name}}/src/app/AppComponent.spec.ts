@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { Router } from '@angular/router';
+import { Component } from "@angular/core";
+import { ComponentFixture, TestBed } from "@angular/core/testing";
+import { Router } from "@angular/router";
 import { AppComponent } from "./AppComponent";
 
-@Component({selector: 'router-outlet', template: ''})
+@Component({selector: "router-outlet", template: ""})
 class RouterOutletStubComponent { }
 
 /**
@@ -13,10 +13,10 @@ class RouterOutletStubComponent { }
  * like our sample AppComponent. See angular.io to learn more about Angular
  * testing.
  */
-describe('AppComponent', () => {
+describe("AppComponent", () => {
 
     beforeEach(() => {
-        const routerSpy = jasmine.createSpyObj('Router', ['navigateByUrl']);
+        const routerSpy = jasmine.createSpyObj("Router", ["navigateByUrl"]);
         TestBed.configureTestingModule({
             declarations: [AppComponent, RouterOutletStubComponent],
             providers: [
@@ -25,8 +25,8 @@ describe('AppComponent', () => {
         });
     });
 
-    it('should succeed', () => {
+    it("should succeed", () => {
         const fixture: ComponentFixture<AppComponent> = TestBed.createComponent(AppComponent);
-        expect(fixture).toBeDefined('No fixture created');
+        expect(fixture).toBeDefined("No fixture created");
     });
 });

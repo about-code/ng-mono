@@ -1,8 +1,9 @@
-import '@angular/platform-browser';
-import '@angular/platform-browser-dynamic';
-import '@angular/animations';
-import '@angular/core';
-import '@angular/common';
-import '@angular/forms';
-import '@angular/http';
-import '@angular/router';
+import "@angular/animations";
+import "@angular/common";
+import "@angular/core";
+import "@angular/forms";
+import "@angular/http";
+import "@angular/platform-browser";
+import "@angular/platform-browser-dynamic";
+import "@angular/router";
+
