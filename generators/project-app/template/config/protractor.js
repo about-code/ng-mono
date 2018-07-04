@@ -26,10 +26,14 @@ exports.config = {
   },
 
   beforeLaunch: function() {
-      require('ts-node').register({
-          project: path.resolve(__dirname, '../'),
-          compiler: 'typescript'
-      });
+    require('ts-node').register({
+      project: path.resolve(__dirname, '../tsconfig.json'),
+      compiler: 'typescript',
+      transpileOnly: true,
+      compilerOptions: {
+        module: "commonjs"
+      }
+    });
   }
 };
 

@@ -37,11 +37,9 @@ Use `npm run lerna -- publish` to version packages (see [lernajs.io](https://ler
 
 ### End-To-End / UI-Testing
 
-
 1. Before you run tests the very first time:  `npm run webdriver-manager update`
 1. Run Application (console 1): `npm start`
-1. Run Selenium Server locally (console 2): `npm run selenium`
-1. Run Tests locally (console 3): `npm run test-e2e`
+1. Run Tests locally (console 2): `npm run test-e2e`
 
 - **Convention:** E2E test specs must end with `.e2e-spec.ts`
 - **Note:** To customize the setup edit `config/protractor.js`.
