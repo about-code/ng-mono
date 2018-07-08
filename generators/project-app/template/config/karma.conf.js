@@ -33,9 +33,8 @@ module.exports = function(config) {
     ,autoWatch: DEBUG == true
     ,singleRun: DEBUG == false
     ,reporters: DEBUG == true ? [] : ['coverage-istanbul']
-    ,webpack: webpackMerge(webpackTestConf, {
-        watch: DEBUG == true
-        ,module: {
+    ,webpack:   DEBUG == true ? webpackTestConf : webpackMerge(webpackTestConf, {
+        module: {
             rules: [{
                 test: /\.tsx?$/
                 ,loader: 'istanbul-instrumenter-loader'
