@@ -17,7 +17,7 @@
   "dependencies": {
     "change-case": "^3.0.2",
     "gulp": "^4.0.0",
-    "gulp-conflict": "^0.4.0",
+    "gulp-conflict": "github:about-code/gulp-conflict",
     "gulp-filter": "^5.1.0",
     "gulp-inject-string": "^1.1.1",
     "gulp-plumber": "^1.2.0",
