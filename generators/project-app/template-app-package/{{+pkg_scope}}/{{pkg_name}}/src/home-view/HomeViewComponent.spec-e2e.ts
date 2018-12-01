@@ -7,13 +7,15 @@ describe("AppComponent", () => {
         browser
             .findElement(by.xpath(".//h1"))
             .then(el => el.getText())
-            .then(innerText => {
-                expect(innerText).toBe("Welcome Home", "Wrong inner text. Did HomeViewComponent-Template change?");
-                done();
-            })
-            .catch((err: any) => {
-                fail(err);
-                done();
-            });
+            .then(
+                (innerText) => {
+                    expect(innerText).toBe("Welcome Home", "Wrong inner text. Did HomeViewComponent-Template change?");
+                    done();
+                },
+                (err: any) => {
+                    fail(err);
+                    done();
+                }
+            );
     });
 });
