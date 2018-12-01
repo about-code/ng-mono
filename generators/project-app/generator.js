@@ -69,8 +69,8 @@ module.exports = function project() {
             }
         } else {
             // answer: no
-            context.copyTemplate = { templateDir: "./null", targetDir: "./null" };
-            context.processSnippets = { filesGlob: [] };
+            context.copyTemplate = {};
+            context.processSnippets = { filesGlob: ""};
         }
         return context;
     })
