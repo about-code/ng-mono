@@ -1,5 +1,4 @@
 *.gitignore.*
-*.code-workspace
 node_modules
 npm-debug.log
 misc
