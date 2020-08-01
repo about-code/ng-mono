@@ -1,3 +1,5 @@
+**This project has been archived.** Since Angular v6 Angular-CLI supports *libraries* which can be developed alongside an app in a monorepo. Fortunately, with this feature it officially supports a development model and project layout *ng-mono* had it in mind at a time the CLI was not as mature as it is today, that is: building medium-sized to larger apps from *reusable, maintainable, shippable packages*. These allow leveraging package managers and package registries as well as importing ES modules from well-defined package exports rather than spreading relative import paths accross a large codebase thereby violating good practices of software design. Packages/Libraries are key to structuring medium-sized and large Angular apps since they mean true modularization beyond *NgModules* right down to the package-level.
+
 # ng-mono
 
 A generator to help setting up an [Angular](https://angular.io) multi-package
